@@ -6,7 +6,9 @@ import Footer from '../components/Footer'
 const UserSideLayout = () => {
   return (
    <>
+  
    <Header />
+  
    <main>
     <Outlet />
    </main>

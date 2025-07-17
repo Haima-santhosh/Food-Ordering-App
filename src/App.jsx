@@ -18,6 +18,10 @@ import AdminOrdersPage from "./pages/AdminOrdersPage";
 import AdminUsersPage from "./pages/AdminUsersPage";
 import UserSideLayout from "./layout/UserSideLayout";
 import AdminSideLayout from "./layout/AdminSideLayout";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+
+
 
 
 function App() {
