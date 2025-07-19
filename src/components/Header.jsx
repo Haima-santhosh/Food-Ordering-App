@@ -22,8 +22,8 @@ const Header = () => {
         text: "About"
       },
       {
-        url: "/menu",
-        text: "Menu"
+        url: "/restaurents",
+        text: "Restaurents"
       },
 
       {

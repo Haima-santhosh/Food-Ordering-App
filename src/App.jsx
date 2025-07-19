@@ -3,8 +3,6 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
-import MenuPage from "./pages/MenuPage";
-import MenuItemDetails from "./pages/MenuItemDetails";
 import ContactPage from "./pages/ContactPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
@@ -19,6 +17,10 @@ import AdminUsersPage from "./pages/AdminUsersPage";
 import UserSideLayout from "./layout/UserSideLayout";
 import AdminSideLayout from "./layout/AdminSideLayout";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import RestaurentPage from "./pages/RestaurentPage";
+import MenuPage from "./pages/MenuPage";
+
+
 
 
 
@@ -37,12 +39,13 @@ function App() {
       <Route path="/" element={<UserSideLayout />}>
         <Route index element={<HomePage />} />
         <Route path="about" element={<AboutPage />} />
-        <Route path="menu" element={<MenuPage />} />
-        <Route path="menu/:menuId" element={<MenuItemDetails />} />
+        <Route path="restaurents" element={<RestaurentPage />} />
+        <Route path="/restaurant/:id/menu" element={<MenuPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="order-confirmation" element={<OrderConfirmationPage />} />
+
       </Route>
       
 
