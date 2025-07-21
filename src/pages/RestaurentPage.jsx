@@ -199,7 +199,7 @@ const totalPages = Math.ceil(filteredData.length / itemsPerPage);
          {filteredData.length === 0 ? (
   <p className="text-center text-red-500 col-span-full">No data found.</p>
 ) :  (
-  currentItems.map((item, index) => ( // ✅ use paginated items
+  currentItems.map((item, index) => ( 
     <RestaurentCard key={index} item={item} />
   ))
 )}

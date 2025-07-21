@@ -40,7 +40,8 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="restaurents" element={<RestaurentPage />} />
-        <Route path="/restaurant/:id/menu" element={<MenuPage />} />
+       <Route path="/restaurents/:id/menu" element={<MenuPage />} />
+
         <Route path="contact" element={<ContactPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="checkout" element={<CheckoutPage />} />

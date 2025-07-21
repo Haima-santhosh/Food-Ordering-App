@@ -1,9 +1,10 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
 
 
 const RestaurentCard = ({ item }) => {
-  const navigate = useNavigate();
+
 
 
 
@@ -11,7 +12,9 @@ const RestaurentCard = ({ item }) => {
 
 
   return (
-   <div className="max-w-sm w-full bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-xl transition duration-300 flex flex-col p-2">
+  <Link to={`/restaurents/${item.id}/menu`}  >
+
+   <div className="text-center max-w-sm w-full bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-xl flex flex-col p-2 hover:scale-105 transition-transform duration-300">
      <div className="relative w-full h-48">
        <img
           src={item.menuImage}
@@ -39,20 +42,22 @@ const RestaurentCard = ({ item }) => {
         <p className="text-sm text-gray-600 mb-1 truncate">{item?.cuisineType}</p>
         <p className="text-sm text-gray-500 mb-2 truncate">{item?.location}</p>
 
-        <div className="text-xs text-gray-500 flex items-center gap-2">
+        <div className="text-xs text-gray-500 flex items-center gap-2 justify-center">
           <span className="inline-block w-2 h-2 bg-green-400 rounded-full"></span>
-          <span>{item?.deliveryTime}</span>
+          <span className="">{item?.deliveryTime}</span>
         </div>
+<Link to={`/restaurents/${item.id}/menu`}>
 
-       <button 
-  className="mt-4 bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded transition flex justify-center items-center"
-  onClick={() => navigate(`/restaurant/${item.id}/menu`)}  
->
-  Browse Menu
-</button>
+  <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+    Browse Menu
+  </button>
+</Link>
+
+
 
       </div>
     </div>
+  </Link>
   );
 };
 

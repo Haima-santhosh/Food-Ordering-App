@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { FaTimes } from 'react-icons/fa'
+import { FaTimes,FaShoppingCart, FaUserCircle } from 'react-icons/fa'
 import { CiMenuFries } from 'react-icons/ci'
 
 
@@ -28,12 +28,12 @@ const Header = () => {
 
       {
         url: "/cart",
-        text: "Cart"
+        icon: <FaShoppingCart size={20} />
       },
 
       {
         url: "/login",
-        text: "Login"
+        icon: <FaUserCircle size={20} />
       }
 
 
@@ -66,7 +66,7 @@ const Header = () => {
             : "hover:text-blue-600 font-extrabold"
         }
       >
-        {item.text}
+       {item.icon ? item.icon : item.text}
       </NavLink>
               )
               )
@@ -94,8 +94,9 @@ const Header = () => {
       {navLinkData.map((item, index) => (
         <Link key={index} to={item.url} onClick={() => setClick(false)}>
           <li className='my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded'>
-            {item.text}
-          </li>
+            {item.icon ? item.icon : item.text}
+      {!item.icon && item.text}
+      </li>
         </Link>
       ))}
     </ul>
