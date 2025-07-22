@@ -3,9 +3,17 @@ import { fetchmenu } from '../api/menuData'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react';
 
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../features/cart/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 const MenuPage = () => {
+
+  
+
+
+  
 
   const [restaurent,setRestaurent]=useState(null)
   const { id }=useParams()
@@ -41,38 +49,40 @@ const filteredData = restaurent?.menu
       return 0;
     }) || []
 
+const dispatch = useDispatch();
+const navigate = useNavigate();
 
   
-
-
-
 
 
     if(!restaurent)
   {
     return(
 
-      <div className='width-full h-screen flex justify-center items-center text-3xl italic text-red-500'>
+      <div className='flex justify-center items-center min-h-screen  text-3xl bold text-red-500'>
         Loading...
       </div>
 
     )
     
   }
+
+
+
   
    return (
    <>
-    <div className='min-h-screen w-full container bg-white mb-10  '>
+ <div className="min-h-screen w-full mx-auto bg-white mb-10 px-4 sm:px-6 md:px-8">
 
-      <div className="flex items-center px-8 pt-8">
-    
-  </div>
+
+      
 
       <h1 className='text-center p-6 font-bold text-5xl border m-10 rounded-lg shadow-lg bg-slate-100'>
         {restaurent.RestaurentName} - Menu
       </h1>
 
-      <div className='flex p-8 gap-4'>
+      <div className='flex flex-col md:flex-row justify-between items-center gap-4 px-4 md:px-8 mb-6'>
+
         <div className='flex-1'>
 
 <form className="max-w-sm mx-auto mb-6">
@@ -103,7 +113,7 @@ const filteredData = restaurent?.menu
         </div>
         <input
           type="search"
-          id="search"F
+          id="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
@@ -121,7 +131,7 @@ const filteredData = restaurent?.menu
 
                 <div className='flex justify-center items-center'>
                   <Link
-      to="/restaurents"
+      to="/restaurants"
       className="inline-flex items-center text-blue-600 hover:text-blue-800   font-bold mb-8 text-2xl "
     >
       <ArrowLeft className="mr-2" size={20} />
@@ -131,28 +141,59 @@ const filteredData = restaurent?.menu
                 </div>
             
 
-      <div className="p-5 mx-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 bg-slate-100 border rounded-md">
+                 <div className="">
+        <div className="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 bg-slate-100 border rounded-md">
+
       
         
-        {filteredData.map((item, index) => (
+        {filteredData.map((item, index) =>
+        
+        (
+          
+          
           <div key={index} className='border rounded-md p-4 bg-white shadow-md text-center h-full flex flex-col justify-between hover:scale-105 transition-transform duration-300'>
             
     
             <img src={item.itemImage} alt={item.itemName} className='h-48 object-cover w-full rounded-md mb-3 ' />
            <div className='bg-slate-100 p-2'>
              <h3 className='text-xl font-semibold mt-3 mb-3'>{item.itemName}</h3>
-            <p className='text-gray-700'>{item.itemDescription}</p>
+           
             <p className='text-green-700 font-bold'>₹{item.price}</p>
             <p className='text-yellow-500'>⭐ {item.rating}</p>
-            <button
-  onClick={() => console.log(item.itemName ,' : clicked for Add to cart ')}
-  className='mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mb-2'
+           
+         <div className='flex flex-col items-center justify-center gap-3 mt-4'>
+  <button
+    onClick={() => {
+      dispatch(addToCart(item));
+      navigate('/cart');
+    }}
+    className='bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 w-40'
+  >
+    Add to Cart
+  </button>
+
+  <button
+  onClick={() => {
+   navigate(`/restaurants/${id}/menu/${item.itemId}`)
+
+  }}
+  className='bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700 w-40 mb-4'
 >
-  Add to Cart
+  View Details
 </button>
+
+</div>
+
+
+           
+
+
+
+          
            </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
     </>

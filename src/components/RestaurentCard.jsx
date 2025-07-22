@@ -12,7 +12,7 @@ const RestaurentCard = ({ item }) => {
 
 
   return (
-  <Link to={`/restaurents/${item.id}/menu`}  >
+  <Link to={`/restaurants/${item.id}/menu`}  >
 
    <div className="text-center max-w-sm w-full bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-xl flex flex-col p-2 hover:scale-105 transition-transform duration-300">
      <div className="relative w-full h-48">
@@ -46,13 +46,13 @@ const RestaurentCard = ({ item }) => {
           <span className="inline-block w-2 h-2 bg-green-400 rounded-full"></span>
           <span className="">{item?.deliveryTime}</span>
         </div>
-<Link to={`/restaurents/${item.id}/menu`}>
-
-  <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+       
+       <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
     Browse Menu
   </button>
-</Link>
 
+
+  
 
 
       </div>

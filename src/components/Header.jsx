@@ -2,14 +2,22 @@ import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaTimes,FaShoppingCart, FaUserCircle } from 'react-icons/fa'
 import { CiMenuFries } from 'react-icons/ci'
+import { useSelector } from 'react-redux';
+
+
+
 
 
 const Header = () => {
 
 
   const [click, setClick] = useState(false)
+  const cartItems = useSelector((state) => state.cart.cartItems || []);
+const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
   const handleClick = () => {
     setClick(!click)
+    
   }
   const navLinkData =
     [
@@ -22,18 +30,35 @@ const Header = () => {
         text: "About"
       },
       {
-        url: "/restaurents",
-        text: "Restaurents"
+        url: "/restaurants",
+        text: "Restaurants"
       },
 
-      {
-        url: "/cart",
-        icon: <FaShoppingCart size={20} />
+       {
+        url: "/contact",
+         text: "Contact"
       },
+
+      
+       {
+  url: "/cart",
+  icon: (
+    <div className="relative">
+      <FaShoppingCart size={35} />
+      {totalCount > 0 && (
+        <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">
+          {totalCount}
+        </span>
+      )}
+    </div>
+  )
+
+      },
+       
 
       {
         url: "/login",
-        icon: <FaUserCircle size={20} />
+        icon: <FaUserCircle size={35} />
       }
 
 
@@ -56,24 +81,23 @@ const Header = () => {
 
           <div className='flex-10'>
             <ul className='flex gap-8 mr-16 text-[18px]'>
-              {navLinkData.map((item) =>
-              (
-                <NavLink key={item.text}
+  {navLinkData.map((item, index) => (
+    <li key={index}>
+      <NavLink
         to={item.url}
+        onClick={() => setClick(false)}
         className={({ isActive }) =>
-          isActive
-            ? "text-blue-600 border-b-2 border-blue-800 font-extrabold"
-            : "hover:text-blue-600 font-extrabold"
+          `block px-3 py-2 border-b border-transparent hover:bg-slate-800 hover:rounded text-xl text-center transition ${
+            isActive ? 'text-blue-500 font-bold border-b-blue-500' : 'text-white'
+          }`
         }
       >
-       {item.icon ? item.icon : item.text}
+        {item.icon ? item.icon : item.text}
       </NavLink>
-              )
-              )
+    </li>
+  ))}
+</ul>
 
-              }
-
-            </ul>
           </div>
         </div>
 
@@ -88,19 +112,28 @@ const Header = () => {
     </header>
 
     {click && (
- <div className='sm:hidden block absolute top-16 w-full left-0 right-0 bg-slate-900 transition text-white font-medium'>
+ <div className='sm:hidden block absolute top-16 w-full left-0 right-0 bg-neutral-900 text-gray-200 font-medium z-50'>
 
-    <ul className='text-center text-xl p-20'>
-      {navLinkData.map((item, index) => (
-        <Link key={index} to={item.url} onClick={() => setClick(false)}>
-          <li className='my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded'>
-            {item.icon ? item.icon : item.text}
-      {!item.icon && item.text}
-      </li>
+  <ul className='text-center text-xl py-6 px-4'>
+    {navLinkData.map((item, index) => (
+      <li
+        key={index}
+        className='my-4 py-5 border-b border-gray-800 hover:bg-blue-600 hover:text-white hover:rounded transition duration-300'
+      >
+        <Link
+          to={item.url}
+          onClick={() => setClick(false)}
+          className='flex items-center justify-center gap-2'
+        >
+          {item.icon && <span className='text-2xl'>{item.icon}</span>}
+          <span>{item.text}</span>
         </Link>
-      ))}
-    </ul>
-  </div>
+      </li>
+    ))}
+  </ul>
+
+</div>
+
 )}
 
   </>

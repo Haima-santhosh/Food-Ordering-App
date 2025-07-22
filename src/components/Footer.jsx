@@ -1,28 +1,29 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 const Footer = () => {
   return (
     <footer className="bg-slate-900 text-white px-6 py-10">
   <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-{/*     
-    Logo and Tagline */}
+
     <div>
       <img src="/logo.png" alt="Grabbite Logo" className="h-24 w-1/3" />
       <p className="text-xl text-gray-400">Grab. Bite. Repeat.</p>
     </div>
 
-    {/* Quick Links */}
+    
     <div>
       <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
       <ul className="space-y-2 text-sm text-gray-400">
-        <li><a href="#" className="hover:text-white">Home</a></li>
-        <li><a href="#" className="hover:text-white">Menu</a></li>
-        <li><a href="#" className="hover:text-white">Offers</a></li>
-        <li><a href="#" className="hover:text-white">Contact</a></li>
+       <li><Link to="/" className="hover:text-white">Home</Link></li>
+  <li><Link to="/about" className="hover:text-white">About</Link></li>
+  <li><Link to="/restaurants" className="hover:text-white">Restaurants</Link></li>
+  <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
       </ul>
     </div>
 
-    {/* Support */}
+   
     <div>
       <h3 className="text-lg font-semibold mb-3">Support</h3>
       <ul className="space-y-2 text-sm text-gray-400">
@@ -33,7 +34,7 @@ const Footer = () => {
       </ul>
     </div>
 
-    {/* Contact and Social */}
+    
     <div>
       <h3 className="text-lg font-semibold mb-3">Connect</h3>
       <p className="text-sm text-gray-400 mb-2">Email: support@grabbite.com</p>

@@ -67,7 +67,7 @@ const handleClearFilters = () => {
   {
     return(
 
-      <div className='width-full h-screen flex justify-center items-center text-3xl italic text-red-500'>
+      <div className='width-full h-screen flex justify-center items-center text-3xl bold text-red-500'>
         Loading...
       </div>
 
@@ -106,14 +106,16 @@ const handleClearFilters = () => {
   });
 } else if (sort === 'priceHigh') {
   sortedData.sort((a, b) => {
-    const aPrice = parseInt(a.AveragePrice) || 0;
-    const bPrice = parseInt(b.AveragePrice) || 0;
+    const aPrice = parseInt(a.AveragePrice.replace(/[^\d]/g, '')) || 0; // Remove Rupee symbol conflict
+const bPrice = parseInt(b.AveragePrice.replace(/[^\d]/g, '')) || 0;
+
     return bPrice - aPrice;
   });
 } else if (sort === 'priceLow') {
   sortedData.sort((a, b) => {
-    const aPrice = parseInt(a.AveragePrice) || 0;
-    const bPrice = parseInt(b.AveragePrice) || 0;
+    const aPrice = parseInt(a.AveragePrice.replace(/[^\d]/g, '')) || 0;
+const bPrice = parseInt(b.AveragePrice.replace(/[^\d]/g, '')) || 0;
+
     return aPrice - bPrice;
   });
 }
@@ -129,7 +131,8 @@ const filteredData = sortedData.filter(item => {
     appliedFilters.dietary.length === 0 ||
     appliedFilters.dietary.includes(item.dietary);
 
-  const price = parseInt(item.AveragePrice) || 0;
+  const price = parseInt(item.AveragePrice.replace(/[^\d]/g, '')) || 0; //REmove rupee symbol ₹
+
   const priceMatch =
     appliedFilters.priceRange.length === 0 ||
     appliedFilters.priceRange.some(range => {
@@ -194,7 +197,7 @@ const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
             </div>
 
-            <div className="w-[90%] p-5 mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 bg-slate-100">
+            <div className="w-[90%] p-5 mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 bg-slate-100 mb-10">
          
          {filteredData.length === 0 ? (
   <p className="text-center text-red-500 col-span-full">No data found.</p>
@@ -204,10 +207,10 @@ const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   ))
 )}
 
-
+    
              
             </div>
-
+<Pagination className="mx-auto" currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
 
 
 
@@ -217,7 +220,7 @@ const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
         </div>
       </div>
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+     
     </div>
 
   )

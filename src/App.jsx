@@ -19,6 +19,8 @@ import AdminSideLayout from "./layout/AdminSideLayout";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import RestaurentPage from "./pages/RestaurentPage";
 import MenuPage from "./pages/MenuPage";
+import MenuItemDetails from "./pages/MenuItemDetails";
+
 
 
 
@@ -39,8 +41,9 @@ function App() {
       <Route path="/" element={<UserSideLayout />}>
         <Route index element={<HomePage />} />
         <Route path="about" element={<AboutPage />} />
-        <Route path="restaurents" element={<RestaurentPage />} />
-       <Route path="/restaurents/:id/menu" element={<MenuPage />} />
+        <Route path="restaurants" element={<RestaurentPage />} />
+        <Route path="restaurants/:id/menu" element={<MenuPage />} />
+        <Route path="restaurants/:id/menu/:itemId" element={<MenuItemDetails />} />
 
         <Route path="contact" element={<ContactPage />} />
         <Route path="cart" element={<CartPage />} />
