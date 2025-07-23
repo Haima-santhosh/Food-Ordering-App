@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import Filters from '../components/Filters';
-import Category from '../components/Category';
-import SearchBar from '../components/SearchBar';
-import SortDropdown from '../components/SortDropdown';
+import Category from '../utils/Category';
+
 import RestaurentCard from '../components/RestaurentCard';
 import {fetchrestaurent } from '../api/restaurentData';
-import Pagination from '../components/pagination';
-Pagination
+import Pagination from '../utils/Pagination';
+import SearchBar from '../utils/SearchBar';
+import Filters from '../utils/Filters';
+import SortDropdown from '../utils/SortDropdown';
+
+
+
 
 const RestaurentPage = () => {
   

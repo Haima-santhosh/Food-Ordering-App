@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { clearCart } from '../features/cart/cartSlice';
+import { ArrowLeft } from 'lucide-react';
+
 
 
 
@@ -77,7 +79,7 @@ const CheckoutPage = () => {
               <input type='text' placeholder='ZIP' name='zip' value={form.zip} onChange={handleChange} className='w-1/3 border p-3 rounded' required />
             </div>
             <div className='flex items-center gap-2'>
-              <input type='checkbox' className='w-4 h-4' />
+              <input type='checkbox' className='w-4 h-4' required />
               <label className='text-sm'>Cash on Delivery</label>
             </div>
             <button type='submit' className='w-full mt-2 bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition'>
@@ -136,7 +138,19 @@ const CheckoutPage = () => {
             </div>
           </div>
         </div>
+
+        
       </div>
+      <div className='flex justify-center items-center'>
+                        <Link
+            to="/restaurants"
+            className="inline-flex items-center text-white  bg-blue-600 hover:bg-blue-800 border rounded-lg shadow-lg px-6 py-3  font-bold mb-8 text-2xl mt-8 "
+          >
+            <ArrowLeft className="mr-2" size={20} />
+            Back to Restaurants
+          </Link>
+      
+                      </div>
     </div>
   );
 };

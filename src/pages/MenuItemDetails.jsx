@@ -76,7 +76,7 @@ const MenuItemDetails = () => {
         <div className="mt-12 text-center">
           <button
             onClick={() => navigate(-2)}
-            className="text-white bg-gray-700 hover:bg-gray-800 px-6 py-3 rounded-lg transition"
+            className="text-white bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-lg transition"
           >
             ← Back to Restaurants
           </button>

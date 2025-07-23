@@ -80,8 +80,8 @@ const order = JSON.parse(localStorage.getItem('latestOrder'));
         </div>
 
         <Link
-          to="/"
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition"
+          to="/restaurants"
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition mb-10"
         >
           Continue Shopping
         </Link>

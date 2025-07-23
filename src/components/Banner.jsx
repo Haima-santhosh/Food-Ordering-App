@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 const Banner = () => {
 
@@ -39,9 +41,13 @@ const Banner = () => {
     </p>
 
     <div className="mt-4 mb-4">
+      
+      <Link to='restaurants'>
+
       <button className="bg-blue-600 hover:bg-white text-white hover:text-blue-800 border border-blue-800 px-6 py-3 rounded-xl text-base md:text-lg font-semibold shadow-md hover:shadow-xl transition duration-300 ease-in-out">
         Order Now
       </button>
+      </Link>
 
       <div className="flex justify-center items-center gap-6 pt-10">
         {socialMedia.map((item) => (

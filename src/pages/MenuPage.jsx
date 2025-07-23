@@ -78,7 +78,7 @@ const navigate = useNavigate();
       
 
       <h1 className='text-center p-6 font-bold text-5xl border m-10 rounded-lg shadow-lg bg-slate-100'>
-        {restaurent.RestaurentName} - Menu
+        <span className='text-blue-600'>{restaurent.RestaurentName} </span>- Menu
       </h1>
 
       <div className='flex flex-col md:flex-row justify-between items-center gap-4 px-4 md:px-8 mb-6'>
@@ -130,15 +130,15 @@ const navigate = useNavigate();
       </div>
 
                 <div className='flex justify-center items-center'>
-                  <Link
-      to="/restaurants"
-      className="inline-flex items-center text-blue-600 hover:text-blue-800   font-bold mb-8 text-2xl "
-    >
-      <ArrowLeft className="mr-2" size={20} />
-      Back to Restaurants
-    </Link>
-
-                </div>
+                                        <Link
+                            to="/restaurants"
+                            className="inline-flex items-center text-white  bg-blue-600 hover:bg-blue-800 border rounded-lg shadow-lg px-6 py-3  font-bold mb-8 text-2xl mt-8 "
+                          >
+                            <ArrowLeft className="mr-2" size={20} />
+                            Back to Restaurents
+                          </Link>
+                      
+                                      </div>
             
 
                  <div className="">
