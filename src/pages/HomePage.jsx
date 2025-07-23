@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Banner from '../components/Banner'
 import { FaUtensils,FaShippingFast, FaStar } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
+ const navigate = useNavigate();
+
+  useEffect(() => {
+    const loginData = JSON.parse(localStorage.getItem('loginData'));
+    
+    if (!loginData || !loginData.email) {
+      navigate('/login')
+    }
+  }, [navigate]);
+
+
   return (
     <>
     <div>

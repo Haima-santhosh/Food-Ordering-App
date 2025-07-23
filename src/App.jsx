@@ -7,8 +7,8 @@ import ContactPage from "./pages/ContactPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
-import LoginPage from "./pages/LoginPage";
-import SignUpPage from "./pages/SignUpPage";
+
+
 import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminDashboardPage from "./pages/AdminDashboardPage";
 import AdminMenuItemsPage from "./pages/AdminMenuItemsPage";
@@ -20,6 +20,11 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import RestaurentPage from "./pages/RestaurentPage";
 import MenuPage from "./pages/MenuPage";
 import MenuItemDetails from "./pages/MenuItemDetails";
+import LoginPage from "./components/LoginPage";
+import SignUpPage from "./components/SignUpPage";
+import LogoutPage from "./components/LogoutPage";
+
+
 
 
 
