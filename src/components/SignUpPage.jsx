@@ -1,53 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const SignUpPage = () => {
 
-  const [signupData, setSignupData] = useState({ name: '', email: '', password: '' });
-  const [error, setError] = useState('');
+const SignUpPage = () => {
   const navigate = useNavigate();
 
+  const [signupData, setSignupData] = useState({name: '',email: '',password: '',});
+
+  const [error, setError] = useState('');
+
+ 
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSignupData({ ...signupData, [name]: value });
+    setError('')
   };
 
+  
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
+  const { name, email, password } = signupData;
 
-    const { name, email, password } = signupData;
-
-    // Basic validations
-    if (!name || !email || !password) {
-      setError('All fields are required.');
-      return;
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError('Enter a valid email.');
-      return;
-    }
-
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters.');
-      return;
-    }
-
-    // Get existing users or empty array
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-
-    // Check if user already exists
-    const exists = users.find(user => user.email === email);
-    if (exists) {
-      setError('User already exists. Please log in.');
-      return;
-    }
-
-    // Save new user
-    users.push(signupData);
-    localStorage.setItem('users', JSON.stringify(users));
-    navigate('/login');
+  if (!name || !email || !password) {
+    setError('Please fill in all fields.');
+    return;
   }
+
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+
+  const existingUser = users.find((user) => user.email === email);
+  if (existingUser) {
+    setError('Email already exists.');
+    return;
+  }
+
+  const newUser = { name, email, password };
+  users.push(newUser);
+  localStorage.setItem('users', JSON.stringify(users));
+
+  navigate('/login')
+};
 
 
   return (

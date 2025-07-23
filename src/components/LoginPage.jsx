@@ -11,7 +11,9 @@ const LoginPage = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLoginData({ ...loginData, [name]: value });
-  };
+  }
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

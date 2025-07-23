@@ -7,7 +7,8 @@ const HomePage = () => {
  const navigate = useNavigate();
 
   useEffect(() => {
-    const loginData = JSON.parse(localStorage.getItem('loginData'));
+    const loginData = JSON.parse(localStorage.getItem('loggedInUser'));
+
     
     if (!loginData || !loginData.email) {
       navigate('/login')
