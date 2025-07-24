@@ -83,18 +83,18 @@ const CartPage = () => {
   <div className="w-fit">
   <button
     onClick={() => navigate(-2)}
-    className="p-4 text-sm bg-blue-700 text-white rounded hover:bg-blue-600"
+    className="p-4 text-md  bg-blue-700 text-white rounded-md shadow-md hover:bg-blue-600"
   >
-    ← Go back to Restaurants
+    Go back to Restaurants
   </button>
 </div>
 
      <div className="w-fit">
   <button
     onClick={() => navigate(-1)}
-    className="p-4 text-sm bg-blue-700 text-white rounded hover:bg-blue-600"
+    className="p-4 text-md  bg-blue-700 text-white rounded-md shadow-md hover:bg-blue-600"
   >
-    ← Go back to Menu
+    Go back to Menu
   </button>
 </div>
 
@@ -104,7 +104,7 @@ const CartPage = () => {
     </div>
 
     
-  );
-};
+  )
+}
 
-export default CartPage;
+export default CartPage

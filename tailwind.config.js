@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+   darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -7,7 +8,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'], // Now font-sans will use Poppins
+        sans: ['Poppins', 'sans-serif'], 
       },
     },
   },

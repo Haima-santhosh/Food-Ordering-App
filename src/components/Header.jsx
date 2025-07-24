@@ -1,143 +1,146 @@
-import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { FaTimes,FaShoppingCart, FaUserCircle } from 'react-icons/fa'
-import { CiMenuFries } from 'react-icons/ci'
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { FaTimes, FaShoppingCart, FaUserCircle } from 'react-icons/fa';
+import { CiMenuFries } from 'react-icons/ci';
 import { useSelector } from 'react-redux';
 
-
-
-
-
 const Header = () => {
+  const [click, setClick] = useState(false);
+  const navigate = useNavigate();
 
-
-  const [click, setClick] = useState(false)
   const cartItems = useSelector((state) => state.cart.cartItems || []);
-const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
-  const handleClick = () => {
-    setClick(!click)
-    
-  }
-  const navLinkData =
-    [
-      {
-        url: "/",
-        text: "Home"
-      },
-      {
-        url: "/about",
-        text: "About"
-      },
-      {
-        url: "/restaurants",
-        text: "Restaurants"
-      },
+  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('loggedInUser')));
 
-       {
-        url: "/contact",
-         text: "Contact"
-      },
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    setUser(currentUser);
+  }, []);
 
-      
-       {
-  url: "/cart",
-  icon: (
-    <div className="relative">
-      <FaShoppingCart size={35} />
-      {totalCount > 0 && (
-        <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">
-          {totalCount}
-        </span>
-      )}
-    </div>
-  )
+  const handleLogout = () => {
+    localStorage.removeItem('loggedInUser');
+    setUser(null);
+    navigate('/login');
+  };
 
-      },
-       
+  const handleClick = () => setClick(!click);
 
-      {
-        url: "/login",
-        icon: <FaUserCircle size={35} />
-      }
-
-
-
-
-    ]
-
-
+  const navLinkData = [
+    { url: '/', text: 'Home' },
+    { url: '/about', text: 'About' },
+    { url: '/restaurants', text: 'Restaurants' },
+    { url: '/contact', text: 'Contact' },
+    {
+      url: '/cart',
+      icon: (
+        <div className="relative">
+          <FaShoppingCart size={25} />
+          {totalCount > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">
+              {totalCount}
+            </span>
+          )}
+        </div>
+      ),
+    },
+    user
+      ? {
+          url: '/profile',
+          icon: (
+            <div className="flex items-center gap-1">
+              <FaUserCircle size={24} />
+              <span className="hidden md:block text-sm">{user.name}</span>
+            </div>
+          ),
+          isProfile: true,
+        }
+      : {
+          url: '/login',
+          icon: <FaUserCircle size={25} />,
+          text: 'Login',
+        },
+  ];
 
   return (
     <>
-    <header className='bg-slate-900'>
-      <div className='h-10vh flex justify-between z-50 text-white px-20 sm:py-8 md:py-4 lg:py-0 '>
-        <div className='flex items-center flex-1'>
+      <header className="bg-slate-900 w-full">
+        <div className="flex items-center justify-between px-6 py-4 md:px-12 lg:px-20 text-white">
+          <Link to="/">
+          <img src="/logo.png"alt="Logo" className="h-12 md:h-16 lg:h-20 w-auto brightness-110 contrast-125 opacity-100"
+/>
+
+          </Link>
+
          
-         <img src="/logo.png" alt="Grabbite Logo" className="h-full w-1/6" />
-        </div>
-      <div className='hidden sm:flex flex-1 items-center justify-end font-normal'>
+          <div className="hidden sm:flex items-center gap-6">
+            <ul className="flex items-center gap-6 text-lg">
+              {navLinkData.map((item, idx) => (
+                <li key={idx}>
+                  <NavLink
+                    to={item.url}
+                    onClick={() => setClick(false)}
+                    className={({ isActive }) =>
+                      `flex items-center gap-1 px-3 py-2 rounded transition ${
+                        isActive ? 'text-blue-400 font-semibold' : 'text-white hover:bg-slate-800'
+                      }`
+                    }
+                  >
+                    {item.icon || item.text}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
 
-
-          <div className='flex-10'>
-            <ul className='flex gap-8 mr-16 text-[18px]'>
-  {navLinkData.map((item, index) => (
-    <li key={index}>
-      <NavLink
-        to={item.url}
-        onClick={() => setClick(false)}
-        className={({ isActive }) =>
-          `block px-3 py-2 border-b border-transparent hover:bg-slate-800 hover:rounded text-xl text-center transition ${
-            isActive ? 'text-blue-500 font-bold border-b-blue-500' : 'text-white'
-          }`
-        }
-      >
-        {item.icon ? item.icon : item.text}
-      </NavLink>
-    </li>
-  ))}
-</ul>
-
+            {user && (
+              <button
+                onClick={handleLogout}
+                className="ml-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm"
+              >
+                Logout
+              </button>
+            )}
           </div>
-        </div>
-
-        <div>
 
          
+          <button className="block sm:hidden" onClick={handleClick}>
+            {click ? <FaTimes size={22} /> : <CiMenuFries size={24} />}
+          </button>
         </div>
-        <button className='block sm:hidden transition' onClick={handleClick}>
-          {click ? <FaTimes /> : <CiMenuFries />}
-        </button>
-      </div>
-    </header>
+      </header>
 
-    {click && (
- <div className='sm:hidden block absolute top-16 w-full left-0 right-0 bg-neutral-900 text-gray-200 font-medium z-50'>
+     
+      {click && (
+        <div className="sm:hidden absolute top-[64px] left-0 w-full bg-neutral-900 z-50">
+          <ul className="flex flex-col text-center text-lg py-4">
+            {navLinkData.map((item, idx) => (
+              <li key={idx} className="border-b border-gray-700 py-4 hover:bg-blue-600 transition">
+                <Link
+                  to={item.url}
+                  onClick={() => setClick(false)}
+                  className="flex justify-center items-center gap-2"
+                >
+                  {item.icon}
+                  <span>{item.text}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-  <ul className='text-center text-xl py-6 px-4'>
-    {navLinkData.map((item, index) => (
-      <li
-        key={index}
-        className='my-4 py-5 border-b border-gray-800 hover:bg-blue-600 hover:text-white hover:rounded transition duration-300'
-      >
-        <Link
-          to={item.url}
-          onClick={() => setClick(false)}
-          className='flex items-center justify-center gap-2'
-        >
-          {item.icon && <span className='text-2xl'>{item.icon}</span>}
-          <span>{item.text}</span>
-        </Link>
-      </li>
-    ))}
-  </ul>
+          {user && (
+            <div className="flex justify-center pb-4">
+              <button
+                onClick={handleLogout}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded text-sm"
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </>
+  );
+};
 
-</div>
-
-)}
-
-  </>
-  )
-}
-
-export default Header
+export default Header;

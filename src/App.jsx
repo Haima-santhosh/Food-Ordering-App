@@ -22,7 +22,10 @@ import MenuPage from "./pages/MenuPage";
 import MenuItemDetails from "./pages/MenuItemDetails";
 import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
-import LogoutPage from "./components/LogoutPage";
+import UserProfilePage from "./pages/UserProfilePage";
+
+
+
 
 
 
@@ -54,6 +57,7 @@ function App() {
         <Route path="cart" element={<CartPage />} />
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="order-confirmation" element={<OrderConfirmationPage />} />
+         <Route path="profile" element={<UserProfilePage />} />
 
       </Route>
       
