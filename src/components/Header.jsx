@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { FaTimes, FaShoppingCart, FaUserCircle } from 'react-icons/fa';
-import { CiMenuFries } from 'react-icons/ci';
+import { FaTimes, FaShoppingCart, FaUserCircle } from 'react-icons/fa'
+import { CiMenuFries } from 'react-icons/ci'
 import { useSelector } from 'react-redux';
+
+import { ToggleTheme } from '../Context/ToggleThemeContext'; 
+
+
+
 
 const Header = () => {
   const [click, setClick] = useState(false);
   const navigate = useNavigate();
+  
+
 
   const cartItems = useSelector((state) => state.cart.cartItems || []);
   const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
@@ -64,8 +71,9 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-slate-900 w-full">
-        <div className="flex items-center justify-between px-6 py-4 md:px-12 lg:px-20 text-white">
+      <header className="bg-white dark:bg-slate-900 w-full border-b-2 border-gray-200 dark:border-gray-700 dark:border-0 shadow-lg"> 
+  <div className="flex items-center justify-between px-6 py-4 md:px-12 lg:px-20 text-gray-900 dark:text-white"> 
+
           <Link to="/">
           <img src="/logo.png"alt="Logo" className="h-12 md:h-16 lg:h-20 w-auto brightness-110 contrast-125 opacity-100"
 />
@@ -82,7 +90,8 @@ const Header = () => {
                     onClick={() => setClick(false)}
                     className={({ isActive }) =>
                       `flex items-center gap-1 px-3 py-2 rounded transition ${
-                        isActive ? 'text-blue-400 font-semibold' : 'text-white hover:bg-slate-800'
+                        isActive ? 'text-blue-600 dark:text-blue-400 font-semibold' 
+      : 'text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-slate-800'
                       }`
                     }
                   >
@@ -91,12 +100,13 @@ const Header = () => {
                 </li>
               ))}
             </ul>
-
+          <ToggleTheme />
             {user && (
-              <button
-                onClick={handleLogout}
-                className="ml-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm"
-              >
+             <button
+  onClick={handleLogout}
+  className="ml-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm"
+>
+
                 Logout
               </button>
             )}
@@ -111,10 +121,12 @@ const Header = () => {
 
      
       {click && (
-        <div className="sm:hidden absolute top-[64px] left-0 w-full bg-neutral-900 z-50">
+       <div className="sm:hidden absolute top-[64px] left-0 w-full bg-gray-100 dark:bg-neutral-900 z-50">
+
           <ul className="flex flex-col text-center text-lg py-4">
             {navLinkData.map((item, idx) => (
-              <li key={idx} className="border-b border-gray-700 py-4 hover:bg-blue-600 transition">
+             <li key={idx} className="border-b border-gray-300 dark:border-gray-700 py-4 hover:bg-blue-100 dark:hover:bg-blue-600 transition"> 
+
                 <Link
                   to={item.url}
                   onClick={() => setClick(false)}
@@ -126,13 +138,16 @@ const Header = () => {
               </li>
             ))}
           </ul>
-
+         <div className="flex justify-center mb-4">
+      <ToggleTheme />
+    </div>
           {user && (
             <div className="flex justify-center pb-4">
               <button
-                onClick={handleLogout}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded text-sm"
-              >
+  onClick={handleLogout}
+  className="ml-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm"
+>
+
                 Logout
               </button>
             </div>

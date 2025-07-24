@@ -14,7 +14,7 @@ const CartPage = () => {
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="bg-gray-100 p-6">
       <h1 className="text-4xl font-bold text-center border rounded-lg shadow-lg p-8 bg-white mt-8 mb-14"> Your Shopping Cart</h1>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -78,23 +78,23 @@ const CartPage = () => {
        
       </div>
 
-      <div className='flex justify-center items-center gap-4 mt-8'>
+      <div className='flex justify-center items-center gap-4 mt-8 mb-8'>
 
   <div className="w-fit">
   <button
     onClick={() => navigate(-2)}
     className="p-4 text-md  bg-blue-700 text-white rounded-md shadow-md hover:bg-blue-600"
   >
-    Go back to Restaurants
+    Browse Restaurants
   </button>
 </div>
 
      <div className="w-fit">
   <button
-    onClick={() => navigate(-1)}
+    onClick={() => navigate('/')}
     className="p-4 text-md  bg-blue-700 text-white rounded-md shadow-md hover:bg-blue-600"
   >
-    Go back to Menu
+    Go back to Home
   </button>
 </div>
 

@@ -6,16 +6,19 @@ import { Provider } from 'react-redux';
 import App from './App'
 import './index.css'
 import store from './app/store';
+import { ToggleThemeProvider } from './Context/ToggleThemeContext'
 
 
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ToggleThemeProvider>
   <Provider store={store}>
    <BrowserRouter>
    <App />
    </BrowserRouter>
    </Provider>
-  </StrictMode>,
+   </ToggleThemeProvider>
+  </StrictMode>
 )

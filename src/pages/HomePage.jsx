@@ -21,16 +21,16 @@ const HomePage = () => {
     <div>
 <Banner />
 
-   <div className="py-12 px-5 mx-auto flex flex-wrap justify-center items-center gap-8">
-      
+   <div className="py-12 px-5 mx-auto flex flex-wrap justify-center items-center gap-8 bg-white dark:bg-gray-800">
+ 
   
-  <a href="#" className="block max-w-sm p-6 bg-white  border-gray-200 border-2 rounded-xl shadow-sm hover:bg-gray-100">
+  <a href="#" className="block max-w-sm p-6 bg-white  border-gray-200 border rounded-lg shadow-lg hover:bg-gray-100">
     <div className='flex gap-4 items-center'>
       <div className='flex-1 flex justify-center'>
         <FaUtensils className="text-5xl text-blue-600" />
       </div>
       <div className='flex-1'>
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Easy To Order</h5>
+        <h6 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900">Easy To Order</h6>
         <p className="font-normal text-gray-700 capitalize">Browse Our Diverse Menu and Place Your Order with Ease</p>
       </div>
     </div>

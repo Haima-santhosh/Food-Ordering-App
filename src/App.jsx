@@ -23,15 +23,7 @@ import MenuItemDetails from "./pages/MenuItemDetails";
 import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
 import UserProfilePage from "./pages/UserProfilePage";
-
-
-
-
-
-
-
-
-
+import { ToggleThemeProvider } from "./Context/ToggleThemeContext";
 
 
 
