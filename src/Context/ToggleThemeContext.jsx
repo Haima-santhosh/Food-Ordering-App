@@ -27,7 +27,7 @@ export const ToggleTheme = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="px-3 py-1 border rounded text-sm hover:bg-gray-200 dark:hover:bg-gray-700"
+      className="px-3 py-2 border rounded text-sm hover:bg-gray-200 dark:hover:bg-gray-700"
     >
       {darkMode ? '☀️ Light' : '🌙 Dark'}
     </button>
