@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
 const RestaurentCard = ({ item }) => {
   return (
@@ -58,7 +58,7 @@ const RestaurentCard = ({ item }) => {
         </div>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default RestaurentCard;
+export default RestaurentCard

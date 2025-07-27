@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { fetchUserProfile } from '../api/userProfileData';
+import React, { useEffect, useState } from 'react'
+import { fetchUserProfile } from '../api/userProfileData'
 
 const UserProfilePage = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -25,11 +25,11 @@ const UserProfilePage = () => {
         My Profile
       </h1>
 
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-100 dark:bg-gray-800 border dark:border-gray-700 rounded-xl shadow-xl mb-10 p-8">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-100 dark:bg-gray-800 border dark:border-gray-700 rounded-xl shadow-xl pb-10 px-10 py-10">
 
-        {/* Left Column */}
+       
         <div className="space-y-6">
-          {/* Profile Card */}
+        
           <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md border dark:border-gray-600 p-6 text-center">
             <img
               src={userProfile.profileImage}
@@ -42,7 +42,7 @@ const UserProfilePage = () => {
             <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">{userProfile.address}</p>
           </div>
 
-          {/* Latest Orders */}
+        
           <div className="bg-white dark:bg-gray-700 rounded-lg shadow-md border dark:border-gray-600 p-6">
             <h3 className="text-lg font-bold mb-3 text-center">Latest Orders</h3>
             {userProfile.latestOrders?.map((order, index) => (
@@ -58,7 +58,7 @@ const UserProfilePage = () => {
           </div>
         </div>
 
-        {/* Right Column - Order Summary */}
+       
         <div className="space-y-6">
           <h3 className="text-xl font-bold">Order Summary</h3>
           {userProfile.orders?.map((order) => (
@@ -91,7 +91,7 @@ const UserProfilePage = () => {
 
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UserProfilePage;
+export default UserProfilePage

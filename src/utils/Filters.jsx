@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const Filters = ({ onApplyFilters, onClearFilters }) => {
-  const [cuisine, setCuisine] = useState([]);
-  const [dietary, setDietary] = useState([]);
-  const [priceRange, setPriceRange] = useState([]);
-  const [deliveryTime, setDeliveryTime] = useState([]);
+  const [cuisine, setCuisine] = useState([])
+  const [dietary, setDietary] = useState([])
+  const [priceRange, setPriceRange] = useState([])
+  const [deliveryTime, setDeliveryTime] = useState([])
 
   const handleCheckboxChange = (value, state, setState) => {
     if (state.includes(value)) {
       setState(state.filter(item => item !== value));
     } else {
-      setState([...state, value]);
+      setState([...state, value])
     }
   };
 
@@ -19,11 +19,11 @@ const Filters = ({ onApplyFilters, onClearFilters }) => {
   };
 
   const handleClearAll = () => {
-    setCuisine([]);
-    setDietary([]);
-    setPriceRange([]);
-    setDeliveryTime([]);
-    onClearFilters();
+    setCuisine([])
+    setDietary([])
+    setPriceRange([])
+    setDeliveryTime([])
+    onClearFilters()
   };
 
   const renderCheckbox = (label, state, setState) => (
@@ -39,7 +39,7 @@ const Filters = ({ onApplyFilters, onClearFilters }) => {
       />
       {label}
     </label>
-  );
+  )
 
   return (
     <div className="basis-1/4 bg-slate-100 dark:bg-slate-800 p-6 border border-gray-300 dark:border-slate-700 rounded-md shadow-md h-screen overflow-y-auto">
@@ -88,7 +88,7 @@ const Filters = ({ onApplyFilters, onClearFilters }) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Filters;
+export default Filters

@@ -1,43 +1,43 @@
-import React, { useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const SignUpPage = () => {
   const navigate = useNavigate();
 
-  const [signupData, setSignupData] = useState({name: '',email: '',password: '',});
+  const [signupData, setSignupData] = useState({name: '',email: '',password: '',})
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState('')
 
  
   
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setSignupData({ ...signupData, [name]: value });
+    setSignupData({ ...signupData, [name]: value })
     setError('')
   };
 
   
   const handleSubmit = (e) => {
   e.preventDefault();
-  const { name, email, password } = signupData;
+  const { name, email, password } = signupData
 
   if (!name || !email || !password) {
-    setError('Please fill in all fields.');
+    setError('Please fill in all fields.')
     return;
   }
 
-  const users = JSON.parse(localStorage.getItem('users')) || [];
+  const users = JSON.parse(localStorage.getItem('users')) || []
 
-  const existingUser = users.find((user) => user.email === email);
+  const existingUser = users.find((user) => user.email === email)
   if (existingUser) {
     setError('Email already exists.');
-    return;
+    return
   }
 
-  const newUser = { name, email, password };
+  const newUser = { name, email, password }
   users.push(newUser);
-  localStorage.setItem('users', JSON.stringify(users));
+  localStorage.setItem('users', JSON.stringify(users))
 
   navigate('/login')
 };

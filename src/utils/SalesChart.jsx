@@ -1,5 +1,5 @@
-import React from 'react';
-import { Line } from 'react-chartjs-2';
+import React from 'react'
+import { Line } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,7 +23,7 @@ ChartJS.register(
   Filler 
 );
 
-const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
 const data = {
   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
@@ -78,7 +78,7 @@ const SalesChart = () => {
       <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Monthly Sales</h2>
       <Line data={data} options={options} />
     </div>
-  );
-};
+  )
+}
 
-export default SalesChart;
+export default SalesChart

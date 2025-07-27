@@ -1,8 +1,8 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import AdminHeader from '../components/AdminHeader';
-import AdminFooter from '../components/AdminFooter';
-import AdminSideBar from '../components/AdminSideBar';
+import { Outlet } from 'react-router-dom'
+import AdminHeader from '../components/AdminHeader'
+import AdminFooter from '../components/AdminFooter'
+import AdminSideBar from '../components/AdminSideBar'
 
 const AdminSideLayout = () => {
   return (
@@ -24,4 +24,4 @@ const AdminSideLayout = () => {
   );
 };
 
-export default AdminSideLayout;
+export default AdminSideLayout

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const ContactPage = () => {
   return (
@@ -12,7 +12,7 @@ const ContactPage = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Contact Form */}
+          
           <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow">
             <form noValidate>
               <div className="mb-4">
@@ -51,7 +51,7 @@ const ContactPage = () => {
             </form>
           </div>
 
-          {/* Contact Info */}
+         
           <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow flex flex-col justify-center">
             <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Reach Us</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-2">
@@ -70,7 +70,7 @@ const ContactPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ContactPage;
+export default ContactPage

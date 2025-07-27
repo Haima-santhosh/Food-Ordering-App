@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { fetchOrder } from '../api/adminOrderData'
 
 const AdminOrdersPage = () => {
-  const [orders, setOrders] = useState([]);
-  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [orders, setOrders] = useState([])
+  const [selectedOrder, setSelectedOrder] = useState(null)
 
   useEffect(() => {
     (async () => {
       const data = await fetchOrder();
-      setOrders(data);
+      setOrders(data)
     })();
   }, []);
 

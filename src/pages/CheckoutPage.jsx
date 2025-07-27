@@ -134,7 +134,7 @@ const CheckoutPage = () => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default CheckoutPage

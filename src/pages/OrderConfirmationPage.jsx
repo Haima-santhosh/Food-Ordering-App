@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const OrderConfirmationPage = () => {
-  const order = JSON.parse(localStorage.getItem('latestOrder'));
+  const order = JSON.parse(localStorage.getItem('latestOrder'))
 
   return (
     <div className="min-h-screen bg-green-50 dark:bg-gray-900 flex items-center justify-center px-4">
@@ -72,7 +72,7 @@ const OrderConfirmationPage = () => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default OrderConfirmationPage;
+export default OrderConfirmationPage

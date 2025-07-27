@@ -1,6 +1,6 @@
 
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react'
 
 const ThemeContext = createContext();
 
@@ -18,7 +18,7 @@ export const ToggleThemeProvider = ({ children }) => {
   );
 };
 
-export const useThemeContext = () => useContext(ThemeContext);
+export const useThemeContext = () => useContext(ThemeContext)
 
 
 export const ToggleTheme = () => {
@@ -27,9 +27,9 @@ export const ToggleTheme = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="px-3 py-2 border rounded text-sm hover:bg-gray-200 dark:hover:bg-gray-700"
+      className="px-3 py-2 border rounded text-sm hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-white"
     >
       {darkMode ? '☀️ Light' : '🌙 Dark'}
     </button>
-  );
-};
+  )
+}

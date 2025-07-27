@@ -1,26 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 import Banner from '../components/Banner';
-import { FaUtensils, FaShippingFast, FaStar } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { FaUtensils, FaShippingFast, FaStar } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const loginData = JSON.parse(localStorage.getItem('loggedInUser'));
+    const loginData = JSON.parse(localStorage.getItem('loggedInUser'))
     if (!loginData || !loginData.email) {
-      navigate('/login');
+      navigate('/login')
     }
-  }, [navigate]);
+  }, [navigate])
 
   return (
     <>
       <div>
         <Banner />
 
-        {/* Features Section */}
+      
         <div className="py-11 px-5 mx-auto flex flex-wrap justify-center items-center gap-8 bg-white dark:bg-slate-900 transition-colors duration-300">
-          {/* Card 1 - Easy To Order */}
+         
           <div className="max-w-sm w-full p-6 bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition">
             <div className="flex gap-4 items-center">
               <div className="flex-1 flex justify-center">
@@ -37,7 +37,7 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Card 2 - Fast Delivery */}
+        
           <div className="max-w-sm w-full p-7 bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition">
             <div className="flex gap-4 items-center">
               <div className="flex-1 flex justify-center">
@@ -54,7 +54,7 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Card 3 - Best Quality */}
+        
           <div className="max-w-sm w-full p-6 bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition">
             <div className="flex gap-4 items-center">
               <div className="flex-1 flex justify-center">
@@ -73,7 +73,7 @@ const HomePage = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

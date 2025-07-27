@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { FaTimes, FaShoppingCart, FaUserCircle } from 'react-icons/fa';
+import { FaShoppingCart, FaUserCircle, FaTimes } from 'react-icons/fa';
 import { CiMenuFries } from 'react-icons/ci';
 import { useSelector } from 'react-redux';
 import { ToggleTheme } from '../Context/ToggleThemeContext';
 
 const Header = () => {
-  const [click, setClick] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const cartItems = useSelector((state) => state.cart.cartItems || []);
   const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
@@ -21,20 +21,21 @@ const Header = () => {
     localStorage.removeItem('loggedInUser');
     setUser(null);
     navigate('/login');
+    setMenuOpen(false);
   };
 
-  const handleClick = () => setClick(!click);
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
-  const navLinkData = [
-    { url: '/', text: 'Home' },
-    { url: '/about', text: 'About' },
-    { url: '/restaurants', text: 'Restaurants' },
-    { url: '/contact', text: 'Contact' },
+  const navItems = [
+    { to: '/', text: 'Home' },
+    { to: '/about', text: 'About' },
+    { to: '/restaurants', text: 'Restaurants' },
+    { to: '/contact', text: 'Contact' },
     {
-      url: '/cart',
+      to: '/cart',
       icon: (
         <div className="relative">
-          <FaShoppingCart size={22} />
+          <FaShoppingCart size={20} />
           {totalCount > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">
               {totalCount}
@@ -45,119 +46,104 @@ const Header = () => {
     },
     user
       ? {
-          url: '/profile',
+          to: '/profile',
           icon: (
             <div className="flex items-center gap-1">
-              <FaUserCircle size={22} />
-              <span className="hidden md:block text-sm">{user?.name || 'User'}</span>
+              <FaUserCircle size={20} />
+              <span className="hidden md:inline text-sm">{user?.name || 'User'}</span>
             </div>
           ),
-          isProfile: true,
         }
       : {
-          url: '/login',
-          icon: <FaUserCircle size={22} />,
+          to: '/login',
+          icon: <FaUserCircle size={20} />,
           text: 'Login',
         },
   ];
 
   return (
-    <>
-    <header className="bg-white dark:bg-slate-900 w-full border-b border-gray-200 dark:border-gray-700 shadow-md z-50">
-  <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-20 py-4 text-gray-900 dark:text-white">
+    <header className="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-gray-700 shadow-md z-50">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+       
+        <Link to="/">
+         <img
+  src="/logo1.png"
+  alt="Logo"
+  className="h-12 w-auto max-w-[180px] object-contain"
+/>
 
+        </Link>
 
-           <Link to="/">
-      <img
-        src="/logo.png"
-        alt="Logo"
-        className="h-10 md:h-14 w-auto brightness-110 contrast-125"
-      />
-    </Link>
-
-    
-    <div className="hidden sm:flex items-center justify-end flex-1 gap-4 md:gap-6">
-      
-      <ul className="flex items-center flex-wrap gap-2 text-sm md:text-base">
-        {navLinkData.map((item, idx) => (
-          <li key={idx}>
+       
+        <nav className="hidden sm:flex items-center gap-6">
+          {navItems.map((item, i) => (
             <NavLink
-              to={item.url}
-              onClick={() => setClick(false)}
+              key={i}
+              to={item.to}
+              onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `flex items-center gap-1 px-2 py-1 rounded transition whitespace-nowrap ${
+                `flex items-center gap-1 px-2 py-1 rounded transition ${
                   isActive
-                    ? 'text-blue-600 dark:text-blue-400 font-semibold'
-                    : 'text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-800'
+                    ? 'text-blue-600 dark:text-blue-400 font-semibold border-b-2 border-blue-800'
+                    : 'text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800 '
                 }`
               }
             >
               {item.icon || item.text}
             </NavLink>
-          </li>
-        ))}
-      </ul>
+          ))}
+          <ToggleTheme />
+          {user && (
+            <button
+              onClick={handleLogout}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-sm"
+            >
+              Logout
+            </button>
+          )}
+        </nav>
+
+       
+        <button onClick={toggleMenu} className="sm:hidden text-gray-800 dark:text-white">
+          {menuOpen ? <FaTimes size={22} /> : <CiMenuFries size={24} />}
+        </button>
+      </div>
 
      
-      <ToggleTheme />
-      {user && (
-        <button
-          onClick={handleLogout}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-sm"
-        >
-          Logout
-        </button>
-      )}
-    </div>
-
-    
-    <button className="block sm:hidden" onClick={handleClick}>
-      {click ? <FaTimes size={22} /> : <CiMenuFries size={24} />}
-    </button>
-  </div>
-</header>
-    
-      {click && (
-      
-      <div className="hidden sm:flex items-center justify-between flex-wrap flex-1 gap-4 md:gap-6 custom-nav-container">
-
-          <ul className="flex items-center flex-wrap gap-2 text-sm md:text-base custom-nav-links">
-
-            {navLinkData.map((item, idx) => (
-              <li
-                key={idx}
-                className="border-b border-gray-300 dark:border-gray-700 py-4 hover:bg-blue-100 dark:hover:bg-blue-600 transition"
-              >
-                <Link
-                  to={item.url}
-                  onClick={() => setClick(false)}
-                  className="flex justify-center items-center gap-2 text-gray-900 dark:text-white"
-                >
-                  {item.icon}
-                  {item.text && <span>{item.text}</span>}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="flex justify-center mb-4">
+      {menuOpen && (
+        <div className="sm:hidden px-4 pb-4 space-y-2 bg-white dark:bg-slate-900 border-t dark:border-slate-700">
+          {navItems.map((item, i) => (
+            <NavLink
+              key={i}
+              to={item.to}
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                `flex items-center gap-2 py-2 border-b border-gray-200 dark:border-slate-700 ${
+                  isActive
+                    ? 'text-blue-600 dark:text-blue-400 font-semibold'
+                    : 'text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800'
+                }`
+              }
+            >
+              {item.icon}
+              {item.text && <span>{item.text}</span>}
+            </NavLink>
+          ))}
+          <div className="pt-2">
             <ToggleTheme />
           </div>
           {user && (
-            <div className="flex justify-center pb-4">
-              <button
-                onClick={handleLogout}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm"
-              >
-                Logout
-              </button>
-            </div>
+            <button
+              onClick={handleLogout}
+              className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded text-sm"
+            >
+              Logout
+            </button>
           )}
         </div>
       )}
-    </>
+    </header>
   )
 }
 
 export default Header
-
-

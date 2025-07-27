@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom'
 
 
 const LoginPage = () => {
- const [loginData, setLoginData] = useState({ email: '', password: '' });
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+ const [loginData, setLoginData] = useState({ email: '', password: '' })
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setLoginData({ ...loginData, [name]: value });
+    const { name, value } = e.target
+    setLoginData({ ...loginData, [name]: value })
   }
 
   
@@ -18,23 +18,23 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { email, password } = loginData;
+    const { email, password } = loginData
 
     if (!email || !password) {
-      setError('All fields are required.');
+      setError('All fields are required.')
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const users = JSON.parse(localStorage.getItem('users')) || []
     const foundUser = users.find(
       (user) => user.email === email && user.password === password
     );
 
     if (foundUser) {
-      localStorage.setItem('loggedInUser', JSON.stringify(foundUser));
+      localStorage.setItem('loggedInUser', JSON.stringify(foundUser))
       navigate('/');
     } else {
-      setError('Invalid email or password.');
+      setError('Invalid email or password.')
     }
   }
 
