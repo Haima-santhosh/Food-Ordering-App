@@ -1,23 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { FaTimes, FaShoppingCart, FaUserCircle } from 'react-icons/fa'
-import { CiMenuFries } from 'react-icons/ci'
+import { FaTimes, FaShoppingCart, FaUserCircle } from 'react-icons/fa';
+import { CiMenuFries } from 'react-icons/ci';
 import { useSelector } from 'react-redux';
-
-import { ToggleTheme } from '../Context/ToggleThemeContext'; 
-
-
-
+import { ToggleTheme } from '../Context/ToggleThemeContext';
 
 const Header = () => {
   const [click, setClick] = useState(false);
   const navigate = useNavigate();
-  
-
-
   const cartItems = useSelector((state) => state.cart.cartItems || []);
   const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('loggedInUser')));
 
   useEffect(() => {
@@ -42,7 +34,7 @@ const Header = () => {
       url: '/cart',
       icon: (
         <div className="relative">
-          <FaShoppingCart size={25} />
+          <FaShoppingCart size={22} />
           {totalCount > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">
               {totalCount}
@@ -56,98 +48,106 @@ const Header = () => {
           url: '/profile',
           icon: (
             <div className="flex items-center gap-1">
-              <FaUserCircle size={24} />
-              <span className="hidden md:block text-sm">{user.name}</span>
+              <FaUserCircle size={22} />
+              <span className="hidden md:block text-sm">{user?.name || 'User'}</span>
             </div>
           ),
           isProfile: true,
         }
       : {
           url: '/login',
-          icon: <FaUserCircle size={25} />,
+          icon: <FaUserCircle size={22} />,
           text: 'Login',
         },
   ];
 
   return (
     <>
-      <header className="bg-white dark:bg-slate-900 w-full border-b-2 border-gray-200 dark:border-gray-700 dark:border-0 shadow-lg"> 
-  <div className="flex items-center justify-between px-6 py-4 md:px-12 lg:px-20 text-gray-900 dark:text-white"> 
+    <header className="bg-white dark:bg-slate-900 w-full border-b border-gray-200 dark:border-gray-700 shadow-md z-50">
+  <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-20 py-4 text-gray-900 dark:text-white">
 
-          <Link to="/">
-          <img src="/logo.png"alt="Logo" className="h-12 md:h-16 lg:h-20 w-auto brightness-110 contrast-125 opacity-100"
-/>
 
-          </Link>
+           <Link to="/">
+      <img
+        src="/logo.png"
+        alt="Logo"
+        className="h-10 md:h-14 w-auto brightness-110 contrast-125"
+      />
+    </Link>
 
-         
-          <div className="hidden sm:flex items-center gap-6">
-            <ul className="flex items-center gap-6 text-lg">
-              {navLinkData.map((item, idx) => (
-                <li key={idx}>
-                  <NavLink
-                    to={item.url}
-                    onClick={() => setClick(false)}
-                    className={({ isActive }) =>
-                      `flex items-center gap-1 px-3 py-2 rounded transition ${
-                        isActive ? 'text-blue-600 dark:text-blue-400 font-semibold' 
-      : 'text-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-slate-800'
-                      }`
-                    }
-                  >
-                    {item.icon || item.text}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          <ToggleTheme />
-            {user && (
-             <button
-  onClick={handleLogout}
-  className="ml-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm"
->
-
-                Logout
-              </button>
-            )}
-          </div>
-
-         
-          <button className="block sm:hidden" onClick={handleClick}>
-            {click ? <FaTimes size={22} /> : <CiMenuFries size={24} />}
-          </button>
-        </div>
-      </header>
+    
+    <div className="hidden sm:flex items-center justify-end flex-1 gap-4 md:gap-6">
+      
+      <ul className="flex items-center flex-wrap gap-2 text-sm md:text-base">
+        {navLinkData.map((item, idx) => (
+          <li key={idx}>
+            <NavLink
+              to={item.url}
+              onClick={() => setClick(false)}
+              className={({ isActive }) =>
+                `flex items-center gap-1 px-2 py-1 rounded transition whitespace-nowrap ${
+                  isActive
+                    ? 'text-blue-600 dark:text-blue-400 font-semibold'
+                    : 'text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-800'
+                }`
+              }
+            >
+              {item.icon || item.text}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
 
      
+      <ToggleTheme />
+      {user && (
+        <button
+          onClick={handleLogout}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-sm"
+        >
+          Logout
+        </button>
+      )}
+    </div>
+
+    
+    <button className="block sm:hidden" onClick={handleClick}>
+      {click ? <FaTimes size={22} /> : <CiMenuFries size={24} />}
+    </button>
+  </div>
+</header>
+    
       {click && (
-       <div className="sm:hidden absolute top-[64px] left-0 w-full bg-gray-100 dark:bg-neutral-900 z-50">
+      
+      <div className="hidden sm:flex items-center justify-between flex-wrap flex-1 gap-4 md:gap-6 custom-nav-container">
 
-          <ul className="flex flex-col text-center text-lg py-4">
+          <ul className="flex items-center flex-wrap gap-2 text-sm md:text-base custom-nav-links">
+
             {navLinkData.map((item, idx) => (
-             <li key={idx} className="border-b border-gray-300 dark:border-gray-700 py-4 hover:bg-blue-100 dark:hover:bg-blue-600 transition"> 
-
+              <li
+                key={idx}
+                className="border-b border-gray-300 dark:border-gray-700 py-4 hover:bg-blue-100 dark:hover:bg-blue-600 transition"
+              >
                 <Link
                   to={item.url}
                   onClick={() => setClick(false)}
-                  className="flex justify-center items-center gap-2"
+                  className="flex justify-center items-center gap-2 text-gray-900 dark:text-white"
                 >
                   {item.icon}
-                  <span>{item.text}</span>
+                  {item.text && <span>{item.text}</span>}
                 </Link>
               </li>
             ))}
           </ul>
-         <div className="flex justify-center mb-4">
-      <ToggleTheme />
-    </div>
+          <div className="flex justify-center mb-4">
+            <ToggleTheme />
+          </div>
           {user && (
             <div className="flex justify-center pb-4">
               <button
-  onClick={handleLogout}
-  className="ml-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm"
->
-
+                onClick={handleLogout}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm"
+              >
                 Logout
               </button>
             </div>
@@ -155,7 +155,9 @@ const Header = () => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
+
+

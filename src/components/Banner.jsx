@@ -48,8 +48,8 @@ const Banner = () => {
 
         <div className="flex justify-center items-center p-4 bg-white dark:bg-gray-900">
           <img
-            className="w-full max-w-md md:max-w-full rounded-lg shadow-lg"
-            src="https://www.softsuave.com/blog/wp-content/uploads/2020/07/Food-Delivery-App-Development-Services-997x1024.png"
+            className="w-75 p-5 max-w-md md:max-w-full rounded-lg shadow-lg"
+            src="https://clotsoftwaresolutions.com/products/images/Foodiee/one.png"
             alt="Food delivery App"
           />
         </div>

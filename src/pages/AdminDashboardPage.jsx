@@ -1,15 +1,14 @@
 import React from 'react'
-import SalesChart from "../components/SalesChart"
+import SalesChart from "../utils/SalesChart"
 
 
 
 const AdminDashboardPage = () => {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
-        Dashboard Overview
-      </h1>
-
+      <div className="bg-white dark:bg-slate-900 min-h-screen p-6">
+  <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6"> Dashboard Overview</h1>
+  
+ 
      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow text-center">
@@ -63,6 +62,11 @@ const AdminDashboardPage = () => {
                 <td className="py-2">#1002</td>
                 <td>Jane Smith</td>
                 <td>₹680</td>
+              </tr>
+              <tr className="border-b border-gray-100 dark:border-gray-700">
+                <td className="py-2">#1003</td>
+                <td>Alice Patrick</td>
+                <td>₹2860</td>
               </tr>
             </tbody>
           </table>

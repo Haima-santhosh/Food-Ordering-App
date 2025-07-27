@@ -14,7 +14,7 @@ const AdminSideLayout = () => {
         <AdminSideBar />
 
        
-        <main className="flex-grow p-6">
+        <main className="flex-grow">
           <Outlet />
         </main>
       </div>
