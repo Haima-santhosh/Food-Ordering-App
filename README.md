@@ -8,12 +8,12 @@ A modern and responsive **online food ordering system** built with **React** and
 
 - 🍽️ Browse restaurants & menus
 - 🛒 Add to cart and checkout
-- 🔍 Filter and search by cuisine, rating, dietary, etc.
+- 🔍 Filter and search by cuisine, rating, dietary options  
 - 🌓 Dark/Light Mode toggle
-- 📱 Responsive design for all devices
-- 🧑‍💼 Admin panel for managing items (frontend only)
+- 📱 Fully responsive design  
+- 🧑‍💼 Admin panel for managing items *(frontend only)*   
 - ✅ Order confirmation page with summary
-- ⚙️ Filter sidebar with cuisine, dietary, and delivery options
+-  ⚙️ Sidebar filters for cuisine, dietary, and delivery options
 
 ---
 
@@ -34,18 +34,6 @@ src/
 └── main.jsx # Entry point that renders <App />
 
 
-## 🛠️ Tech Stack
-
-- React.js
-- Redux Toolkit
-- React Router DOM
-- Tailwind CSS
-- Lucide Icons
-- Vite (for development/build)
-
-
-
----
 
 ## 🛠️ Tech Stack
 
@@ -54,7 +42,7 @@ src/
 - React Router DOM
 - Tailwind CSS
 - Lucide Icons
-- Vite (for development/build)
+-- **Vite** (for fast dev/build)       
 
 ---
 
@@ -70,14 +58,15 @@ npm install
 
 # Start the development server
 npm run dev
+ ```       
 
 ## 🧪 Testing
 
 - ✅ Manually tested on desktop and mobile devices.
 - ✅ Checked responsiveness and theme toggling (Dark/Light Mode).
 - ✅ Verified cart operations, checkout flow, and order confirmation page.
-- ✅ Checked filter sidebar functionality.
-- ❗ No automated tests added in this version.
+- ✅ Sidebar filter interactions work correctly  
+-  ❗No automated tests implemented in this version 
 
 ## 🌐 Deployment
 
@@ -86,12 +75,15 @@ To build the production version:
 ```bash
 npm run build
 
+You can then deploy the `dist/` folder using platforms like **Netlify**, **Vercel**, or **Firebase Hosting**. 
+
 ## 🧠 Future Improvements
 
-- Add user authentication
-- Integrate backend API for orders and payments
-- Admin login & product control (backend)
-- Add product reviews and ratings
+- 🔐 Add user authentication  
+- 🔗 Integrate backend API for real-time orders and payments
+- 🧑‍💼 Secure admin login with full CRUD operations 
+- ⭐ Add product reviews and star ratings 
+- 📦 Add support for multiple vendors/restaurants 
 
 ---
 
