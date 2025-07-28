@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react"
-import { fetchOrder } from "../api/adminOrderData"
+import React, { useEffect, useState } from "react";
+import { fetchOrder } from "../api/adminOrderData";
 
 const AdminOrdersPage = () => {
-  const [orders, setOrders] = useState([])
-  const [selectedOrder, setSelectedOrder] = useState(null)
+  const [orders, setOrders] = useState([]);
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
   useEffect(() => {
     (async () => {
-      const data = await fetchOrder()
+      const data = await fetchOrder();
       setOrders(data);
-    })()
-  }, [])
+    })();
+  }, []);
 
   const handleCancel = (orderId) => {
     const updatedOrders = orders.map((order) =>
       order.id === orderId ? { ...order, lastStatus: "Cancelled" } : order,
     );
-    setOrders(updatedOrders)
+    setOrders(updatedOrders);
   };
 
   return (
@@ -144,7 +144,7 @@ const AdminOrdersPage = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default AdminOrdersPage
+export default AdminOrdersPage;

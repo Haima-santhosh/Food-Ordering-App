@@ -12,18 +12,18 @@ const Filters = ({ onApplyFilters, onClearFilters }) => {
     } else {
       setState([...state, value]);
     }
-  }
+  };
 
   const handleApplyFilters = () => {
-    onApplyFilters({ cuisine, dietary, priceRange, deliveryTime })
-  }
+    onApplyFilters({ cuisine, dietary, priceRange, deliveryTime });
+  };
 
   const handleClearAll = () => {
     setCuisine([]);
     setDietary([]);
     setPriceRange([]);
     setDeliveryTime([]);
-    onClearFilters()
+    onClearFilters();
   };
 
   const renderCheckbox = (label, state, setState) => (
@@ -36,10 +36,10 @@ const Filters = ({ onApplyFilters, onClearFilters }) => {
       />
       {label}
     </label>
-  )
+  );
 
   return (
-    <div className="basis-1/4 bg-slate-100 dark:bg-slate-800 p-6 border border-gray-300 dark:border-slate-700 rounded-md shadow-md h-screen overflow-y-auto">
+    <div className="basis-full md:basis-1/4 bg-slate-100 dark:bg-slate-800 p-6 border border-gray-300 dark:border-slate-700 rounded-md shadow-md h-auto md:h-screen overflow-y-auto flex flex-col justify-between">
       <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
         Filters
       </h2>
@@ -80,22 +80,23 @@ const Filters = ({ onApplyFilters, onClearFilters }) => {
         )}
       </div>
 
-      <div className="flex justify-center gap-3">
+      <div className="flex flex-col items-center gap-2 pt-6 w-full">
         <button
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition w-full sm:w-1/2 md:w-auto"
           onClick={handleApplyFilters}
         >
           Apply Filters
         </button>
+
         <button
-          className="block text-sm text-gray-500 dark:text-gray-300 underline hover:text-red-500 dark:hover:text-red-400"
+          className="text-sm text-gray-500 dark:text-gray-300 underline hover:text-red-500 dark:hover:text-red-400 text-center"
           onClick={handleClearAll}
         >
           Clear All
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Filters
+export default Filters;

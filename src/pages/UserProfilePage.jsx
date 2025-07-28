@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react"
-import { fetchUserProfile } from "../api/userProfileData"
+import React, { useEffect, useState } from "react";
+import { fetchUserProfile } from "../api/userProfileData";
 
 const UserProfilePage = () => {
-  const [userProfile, setUserProfile] = useState(null)
+  const [userProfile, setUserProfile] = useState(null);
 
   useEffect(() => {
     (async () => {
-      const data = await fetchUserProfile()
+      const data = await fetchUserProfile();
       setUserProfile(data);
-    })()
-  }, [])
+    })();
+  }, []);
 
   if (!userProfile) {
     return (
@@ -87,10 +87,11 @@ const UserProfilePage = () => {
               <p>
                 Status:{" "}
                 <span
-                  className={`font-medium ${order.status === "Delivered"
+                  className={`font-medium ${
+                    order.status === "Delivered"
                       ? "text-green-600"
                       : "text-yellow-500"
-                    }`}
+                  }`}
                 >
                   {order.status}
                 </span>
@@ -103,7 +104,7 @@ const UserProfilePage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserProfilePage
+export default UserProfilePage;

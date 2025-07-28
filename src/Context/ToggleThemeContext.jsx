@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useState } from "react"
+import React, { createContext, useContext, useState } from "react";
 
-const ThemeContext = createContext()
+const ThemeContext = createContext();
 
 export const ToggleThemeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
 
-  const toggleTheme = () => setDarkMode((prev) => !prev)
+  const toggleTheme = () => setDarkMode((prev) => !prev);
 
   return (
     <ThemeContext.Provider value={{ darkMode, toggleTheme }}>
@@ -14,10 +14,10 @@ export const ToggleThemeProvider = ({ children }) => {
   );
 };
 
-export const useThemeContext = () => useContext(ThemeContext)
+export const useThemeContext = () => useContext(ThemeContext);
 
 export const ToggleTheme = () => {
-  const { toggleTheme, darkMode } = useThemeContext()
+  const { toggleTheme, darkMode } = useThemeContext();
 
   return (
     <button
@@ -26,5 +26,5 @@ export const ToggleTheme = () => {
     >
       {darkMode ? "☀️ Light" : "🌙 Dark"}
     </button>
-  )
-}
+  );
+};

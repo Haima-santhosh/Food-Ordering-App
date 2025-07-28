@@ -1,10 +1,10 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
 
 const RestaurentCard = ({ item }) => {
   return (
     <Link to={`/restaurants/${item.id}/menu`}>
-      <div className="mx-auto sm:mx-0 text-center max-w-sm w-full bg-white dark:bg-slate-800 rounded-xl shadow-md overflow-hidden border dark:border-slate-700 hover:shadow-xl hover:scale-105 transition-transform duration-300 p-2">
+      <div className="w-full max-w-xs mx-auto text-center bg-white dark:bg-slate-800 rounded-xl shadow-md overflow-hidden border dark:border-slate-700 hover:shadow-xl hover:scale-105 transition-transform duration-300 p-2">
         <div className="relative w-full h-48">
           <img
             src={item.menuImage}
@@ -53,7 +53,7 @@ const RestaurentCard = ({ item }) => {
         </div>
       </div>
     </Link>
-  )
-}
+  );
+};
 
-export default RestaurentCard
+export default RestaurentCard;

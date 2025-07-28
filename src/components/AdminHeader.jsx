@@ -1,12 +1,12 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import { CiMenuFries } from "react-icons/ci"
-import { FaTimes, FaUserCircle } from "react-icons/fa"
-import { ToggleTheme } from "../Context/ToggleThemeContext"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { CiMenuFries } from "react-icons/ci";
+import { FaTimes, FaUserCircle } from "react-icons/fa";
+import { ToggleTheme } from "../Context/ToggleThemeContext";
 
 const AdminHeader = () => {
-  const [click, setClick] = useState(false)
-  const handleClick = () => setClick(!click)
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
 
   return (
     <>
@@ -73,7 +73,7 @@ const AdminHeader = () => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default AdminHeader
+export default AdminHeader;

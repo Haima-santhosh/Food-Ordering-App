@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const socialMedia = [
@@ -23,12 +23,11 @@ const Banner = () => {
       image:
         "https://static.vecteezy.com/system/resources/thumbnails/042/148/632/small/instagram-logo-instagram-social-media-icon-free-png.png",
     },
-  ]
+  ];
 
   return (
     <section className="min-h-screen bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
-       
         <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left gap-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-800 dark:text-blue-300 leading-tight">
             Order Your <br /> Favorite Food Online
@@ -62,17 +61,16 @@ const Banner = () => {
           </div>
         </div>
 
-      
         <div className="flex justify-center items-center">
           <img
-            className="w-full max-w-xs sm:max-w-md md:max-w-lg rounded-lg shadow-xl"
-            src="https://clotsoftwaresolutions.com/products/images/Foodiee/one.png"
+            className="w-full max-w-xs sm:max-w-md md:max-w-lg"
+            src="https://toxsl.com/themes/new/img/screen/food_banner_image.png"
             alt="Food delivery App"
           />
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;

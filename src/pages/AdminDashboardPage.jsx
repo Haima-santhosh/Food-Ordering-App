@@ -1,5 +1,5 @@
-import React from "react"
-import SalesChart from "../utils/SalesChart"
+import React from "react";
+import SalesChart from "../utils/SalesChart";
 
 const AdminDashboardPage = () => {
   return (
@@ -83,7 +83,7 @@ const AdminDashboardPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminDashboardPage
+export default AdminDashboardPage;

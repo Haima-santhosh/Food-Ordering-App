@@ -1,7 +1,16 @@
 import React from "react";
 
 const Category = ({ category, setCategory }) => {
-  const categories = ["Main Course","Fast Food","Wraps","Desserts","Beverages","Salads","Healthy","Starters",]
+  const categories = [
+    "Main Course",
+    "Fast Food",
+    "Wraps",
+    "Desserts",
+    "Beverages",
+    "Salads",
+    "Healthy",
+    "Starters",
+  ];
 
   return (
     <div className="w-1/3">
@@ -20,7 +29,7 @@ const Category = ({ category, setCategory }) => {
         ))}
       </select>
     </div>
-  )
-}
+  );
+};
 
-export default Category
+export default Category;

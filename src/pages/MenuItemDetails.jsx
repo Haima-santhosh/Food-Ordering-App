@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
-import { fetchmenuDetails } from "../api/menuData"
-import { useDispatch } from "react-redux"
-import { addToCart } from "../features/cart/cartSlice"
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { fetchmenuDetails } from "../api/menuData";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
 
 const MenuItemDetails = () => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const { id, itemId } = useParams()
-  const [menuItem, setMenuItem] = useState(null)
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { id, itemId } = useParams();
+  const [menuItem, setMenuItem] = useState(null);
 
   useEffect(() => {
     const getDetails = async () => {
-      const data = await fetchmenuDetails(id, itemId)
-      setMenuItem(data)
+      const data = await fetchmenuDetails(id, itemId);
+      setMenuItem(data);
     };
-    if (id && itemId) getDetails()
-  }, [id, itemId])
+    if (id && itemId) getDetails();
+  }, [id, itemId]);
 
   if (!menuItem)
     return (
@@ -94,7 +94,7 @@ const MenuItemDetails = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MenuItemDetails
+export default MenuItemDetails;

@@ -1,13 +1,18 @@
-import React from "react"
+import React from "react";
 
-const EditAdminProductsModal = ({isOpen,onClose,product,setProduct,onSave,
+const EditAdminProductsModal = ({
+  isOpen,
+  onClose,
+  product,
+  setProduct,
+  onSave,
 }) => {
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave({ ...product })
-  }
+    onSave({ ...product });
+  };
 
   return (
     <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center">
@@ -148,7 +153,7 @@ const EditAdminProductsModal = ({isOpen,onClose,product,setProduct,onSave,
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EditAdminProductsModal
+export default EditAdminProductsModal;

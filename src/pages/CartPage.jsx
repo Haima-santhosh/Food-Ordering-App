@@ -1,17 +1,22 @@
-import React from "react"
-import { useSelector, useDispatch } from "react-redux"
-import {increaseQuantity,decreaseQuantity,clearCart,
-} from "../features/cart/cartSlice"
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  increaseQuantity,
+  decreaseQuantity,
+  clearCart,
+} from "../features/cart/cartSlice";
 
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
   const navigate = useNavigate();
-  const cartItems = useSelector((state) => state.cart.cartItems)
-  const dispatch = useDispatch()
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const dispatch = useDispatch();
 
   const totalPrice = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,0,)
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
 
   return (
     <div className="bg-gray-100 dark:bg-slate-900 p-6 min-h-screen">
@@ -71,7 +76,7 @@ const CartPage = () => {
           {cartItems.length > 0 && (
             <div className="w-full flex justify-center mt-4">
               <button
-                className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700"
+                className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-red-600"
                 onClick={() => dispatch(clearCart())}
               >
                 Clear Cart
@@ -108,7 +113,7 @@ const CartPage = () => {
       <div className="flex justify-center items-center gap-4 mt-8 mb-8">
         <div className="w-fit">
           <button
-            onClick={() => navigate(-2)}
+            onClick={() => navigate("/restaurants")}
             className="p-4 text-md bg-blue-700 text-white rounded-md shadow-md hover:bg-blue-600"
           >
             Browse Restaurants
@@ -125,7 +130,7 @@ const CartPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CartPage
+export default CartPage;

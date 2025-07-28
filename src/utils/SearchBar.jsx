@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const SearchBar = ({ search, setSearch }) => {
   return (
@@ -15,7 +15,7 @@ const SearchBar = ({ search, setSearch }) => {
         onChange={(e) => setSearch(e.target.value)}
       />
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

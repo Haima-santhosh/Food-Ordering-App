@@ -1,15 +1,23 @@
-import React, { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
-import { clearCart } from "../features/cart/cartSlice"
-import { ArrowLeft } from "lucide-react"
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { clearCart } from "../features/cart/cartSlice";
+import { ArrowLeft } from "lucide-react";
 
 const CheckoutPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [form, setForm] = useState({name: "",email: "",phone: "",address: "",city: "",state: "",zip: "",});
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
 
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -54,7 +62,9 @@ const CheckoutPage = () => {
             Shipping Information
           </h3>
           <form className="space-y-4" onSubmit={handleSubmit}>
-            <input type="text" placeholder="Name"
+            <input
+              type="text"
+              placeholder="Name"
               name="name"
               value={form.name}
               onChange={handleChange}
@@ -197,7 +207,7 @@ const CheckoutPage = () => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CheckoutPage
+export default CheckoutPage;

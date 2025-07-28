@@ -1,21 +1,26 @@
-import React, { useEffect, useState } from "react"
-import {createProduct,deleteProduct,fetchProduct,updateProduct,} from "../api/adminProductData"
+import React, { useEffect, useState } from "react";
+import {
+  createProduct,
+  deleteProduct,
+  fetchProduct,
+  updateProduct,
+} from "../api/adminProductData";
 
-import ProductModal from "../components/EditAdminProductsModal"
+import ProductModal from "../components/EditAdminProductsModal";
 
 const AdminProductsPage = () => {
-  const [productData, setProductData] = useState(null)
+  const [productData, setProductData] = useState(null);
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     (async () => {
-      const data = await fetchProduct()
-      setProductData(data)
-      console.log(data)
-    })()
-  }, [])
+      const data = await fetchProduct();
+      setProductData(data);
+      console.log(data);
+    })();
+  }, []);
 
   const handleDelete = async (id) => {
     const confirm = window.confirm(
@@ -24,24 +29,24 @@ const AdminProductsPage = () => {
     if (confirm) {
       const success = await deleteProduct(id);
       if (success) {
-        setProductData(productData.filter((p) => p.id !== id))
+        setProductData(productData.filter((p) => p.id !== id));
       }
     }
   };
 
   const handleEdit = (id) => {
-    const product = productData.find((p) => p.id === id)
+    const product = productData.find((p) => p.id === id);
 
     // Remove ₹ sign
-    const price = parseInt(product.price.toString().replace(/[^\d]/g, ""))
+    const price = parseInt(product.price.toString().replace(/[^\d]/g, ""));
 
-    setSelectedProduct({ ...product, price })
-    setIsModalOpen(true)
+    setSelectedProduct({ ...product, price });
+    setIsModalOpen(true);
   };
 
   const handleAddProduct = () => {
-    setSelectedProduct(null)
-    setIsModalOpen(true)
+    setSelectedProduct(null);
+    setIsModalOpen(true);
   };
 
   if (!productData) {
@@ -156,16 +161,16 @@ const AdminProductsPage = () => {
               );
             }
           } else {
-            const created = await createProduct(cleanedProduct)
+            const created = await createProduct(cleanedProduct);
             if (created) {
-              setProductData((prev) => [created, ...prev])
+              setProductData((prev) => [created, ...prev]);
             }
           }
           setIsModalOpen(false);
         }}
       />
     </div>
-  )
-}
+  );
+};
 
-export default AdminProductsPage
+export default AdminProductsPage;

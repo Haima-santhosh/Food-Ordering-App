@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 export const fetchrestaurent = async () => {
   try {
@@ -9,9 +9,9 @@ export const fetchrestaurent = async () => {
     //console.log({data});
     return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const fetchRestaurentDetails = async (id) => {
   try {
@@ -21,6 +21,6 @@ export const fetchRestaurentDetails = async (id) => {
     //console.log({data})
     return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};

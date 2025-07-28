@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const AdminFooter = () => {
   return (
@@ -8,7 +8,7 @@ const AdminFooter = () => {
         reserved.
       </p>
     </footer>
-  )
-}
+  );
+};
 
-export default AdminFooter
+export default AdminFooter;

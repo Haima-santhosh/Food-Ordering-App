@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 export const fetchProduct = async () => {
   try {
@@ -9,7 +9,7 @@ export const fetchProduct = async () => {
     //console.log({data})
     return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
@@ -18,25 +18,25 @@ export const fetchProductDetails = async (id, itemId) => {
     const { data } = await axios.get(
       `https://68750bcedd06792b9c9677c5.mockapi.io/adminProductData/${id}`,
     );
-    const menuItem = data.menu.find((item) => item.itemId === itemId)
-    return menuItem
+    const menuItem = data.menu.find((item) => item.itemId === itemId);
+    return menuItem;
   } catch (error) {
-    console.error("Error fetching menu details:", error)
+    console.error("Error fetching menu details:", error);
   }
-}
+};
 
 export const deleteProduct = async (id) => {
   try {
     await axios.delete(
       `https://68750bcedd06792b9c9677c5.mockapi.io/adminProductData/${id.toString()}`,
-    )
+    );
 
-    return true
+    return true;
   } catch (error) {
-    console.error("Failed to delete product:", error)
+    console.error("Failed to delete product:", error);
     return false;
   }
-}
+};
 
 export const updateProduct = async (id, updatedData) => {
   try {
@@ -45,22 +45,22 @@ export const updateProduct = async (id, updatedData) => {
       updatedData,
     );
 
-    return data
+    return data;
   } catch (error) {
-    console.error("Failed to update product:", error)
-    return null
+    console.error("Failed to update product:", error);
+    return null;
   }
-}
+};
 
 export const createProduct = async (newProduct) => {
   try {
     const { data } = await axios.post(
       "https://68750bcedd06792b9c9677c5.mockapi.io/adminProductData",
       newProduct,
-    )
+    );
     return data;
   } catch (error) {
     console.error("Failed to create product:", error);
     return null;
   }
-}
+};

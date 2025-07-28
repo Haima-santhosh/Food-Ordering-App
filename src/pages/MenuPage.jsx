@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react"
-import { fetchmenu } from "../api/menuData"
-import { Link, useParams, useNavigate } from "react-router-dom"
-import { ArrowLeft } from "lucide-react"
-import { useDispatch } from "react-redux"
-import { addToCart } from "../features/cart/cartSlice"
+import React, { useEffect, useState } from "react";
+import { fetchmenu } from "../api/menuData";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
 
 const MenuPage = () => {
-  const { id } = useParams()
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [restaurent, setRestaurent] = useState(null)
-  const [filter, setFilter] = useState("")
-  const [query, setQuery] = useState("")
+  const [restaurent, setRestaurent] = useState(null);
+  const [filter, setFilter] = useState("");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     (async () => {
       const data = await fetchmenu();
-      const selectedMenu = data.find((item) => item.id === id)
-      setRestaurent(selectedMenu)
-    })()
-  }, [id])
+      const selectedMenu = data.find((item) => item.id === id);
+      setRestaurent(selectedMenu);
+    })();
+  }, [id]);
 
   const filteredItems =
     restaurent?.menu
@@ -28,10 +28,10 @@ const MenuPage = () => {
         item.itemName.toLowerCase().includes(query.toLowerCase()),
       )
       ?.sort((a, b) => {
-        if (filter === "rating") return b.rating - a.rating
-        if (filter === "price") return a.price - b.price
-        return 0
-      }) || []
+        if (filter === "rating") return b.rating - a.rating;
+        if (filter === "price") return a.price - b.price;
+        return 0;
+      }) || [];
 
   if (!restaurent) {
     return (
@@ -43,7 +43,6 @@ const MenuPage = () => {
 
   return (
     <div className="min-h-screen w-full bg-white dark:bg-slate-900 px-4 sm:px-6 md:px-10 py-10 text-gray-900 dark:text-white transition-colors duration-300">
-     
       <h1 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-10 bg-slate-100 dark:bg-slate-800 p-6 rounded shadow">
         <span className="text-blue-600 dark:text-blue-400">
           {restaurent.RestaurentName}
@@ -51,7 +50,6 @@ const MenuPage = () => {
         - Menu
       </h1>
 
-     
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
         <div className="w-full md:w-1/3">
           <select
@@ -88,7 +86,6 @@ const MenuPage = () => {
         </div>
       </div>
 
-      
       <div className="text-center mt-5 mb-10">
         <Link
           to="/restaurants"
@@ -99,14 +96,12 @@ const MenuPage = () => {
         </Link>
       </div>
 
-   
       <div className="max-w-7xl mx-auto grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {filteredItems.map((item) => (
           <div
             key={item.itemId}
             className="relative bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl shadow hover:shadow-lg transition-transform duration-300 hover:scale-[1.02] p-4 flex flex-col h-full"
           >
-          
             <div className="absolute top-2 right-2 flex flex-col items-end gap-1">
               {item.discountBadge && (
                 <span className="bg-red-100 text-red-700 px-2 py-1 text-xs rounded font-semibold">
@@ -128,14 +123,12 @@ const MenuPage = () => {
               )}
             </div>
 
-           
             <img
               src={item.itemImage}
               alt={item.itemName}
               className="h-44 w-full object-cover rounded-lg mb-4"
             />
 
-           
             <div className="text-center">
               <h3 className="text-lg font-semibold">{item.itemName}</h3>
               <p className="text-green-600 font-bold mt-1">₹{item.price}</p>
@@ -145,12 +138,11 @@ const MenuPage = () => {
               </p>
             </div>
 
-           
             <div className="flex flex-wrap justify-center gap-3 mt-4">
               <button
                 onClick={() => {
                   dispatch(addToCart(item));
-                  navigate("/cart")
+                  navigate("/cart");
                 }}
                 className="px-4 py-2 text-sm rounded shadow text-white bg-green-500 hover:bg-green-600
                w-auto min-w-[120px] max-w-[160px] sm:max-w-none"
@@ -172,7 +164,7 @@ const MenuPage = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MenuPage
+export default MenuPage;

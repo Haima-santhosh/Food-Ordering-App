@@ -1,13 +1,13 @@
-import React from "react"
+import React from "react";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const pageNumbers = []
+  const pageNumbers = [];
 
   for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i)
+    pageNumbers.push(i);
   }
 
-  if (totalPages === 1) return null // Hide pagination if only one page
+  if (totalPages === 1) return null; // Hide pagination if only one page
 
   return (
     <div className="flex justify-center my-8 gap-2 ">
@@ -52,7 +52,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         Next
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Pagination
+export default Pagination;

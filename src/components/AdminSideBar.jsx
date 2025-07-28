@@ -1,13 +1,18 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
-import {FaTachometerAlt,FaBoxOpen,FaClipboardList,FaUsers,} from "react-icons/fa";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import {
+  FaTachometerAlt,
+  FaBoxOpen,
+  FaClipboardList,
+  FaUsers,
+} from "react-icons/fa";
 
 const navLinkData = [
   { url: "/admin", text: "Dashboard", icon: <FaTachometerAlt /> },
   { url: "/admin/products", text: "Products", icon: <FaBoxOpen /> },
   { url: "/admin/orders", text: "Orders", icon: <FaClipboardList /> },
   { url: "/admin/users", text: "Users", icon: <FaUsers /> },
-]
+];
 
 const AdminSideBar = () => {
   return (
@@ -31,7 +36,7 @@ const AdminSideBar = () => {
         ))}
       </nav>
     </aside>
-  )
-}
+  );
+};
 
-export default AdminSideBar
+export default AdminSideBar;

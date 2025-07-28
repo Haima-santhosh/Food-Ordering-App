@@ -1,5 +1,5 @@
-import React from "react"
-import { Line } from "react-chartjs-2"
+import React from "react";
+import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -37,7 +37,7 @@ const data = {
       fill: true,
     },
   ],
-}
+};
 
 const options = {
   responsive: true,
@@ -70,7 +70,7 @@ const options = {
       },
     },
   },
-}
+};
 
 const SalesChart = () => {
   return (
@@ -80,7 +80,7 @@ const SalesChart = () => {
       </h2>
       <Line data={data} options={options} />
     </div>
-  )
-}
+  );
+};
 
-export default SalesChart
+export default SalesChart;

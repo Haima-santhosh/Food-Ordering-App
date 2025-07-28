@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const AboutPage = () => {
   return (
@@ -69,7 +69,7 @@ const AboutPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;

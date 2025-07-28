@@ -1,8 +1,8 @@
-import React from "react"
-import { useThemeContext } from "./ToggleThemeContext"
+import React from "react";
+import { useThemeContext } from "./ToggleThemeContext";
 
 const ToggleTheme = () => {
-  const { toggleTheme, darkMode } = useThemeContext()
+  const { toggleTheme, darkMode } = useThemeContext();
 
   return (
     <button
@@ -11,7 +11,7 @@ const ToggleTheme = () => {
     >
       {darkMode ? "☀️ Light" : "🌙 Dark"}
     </button>
-  )
-}
+  );
+};
 
-export default ToggleTheme
+export default ToggleTheme;

@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from "react"
-import { Link, NavLink, useNavigate } from "react-router-dom"
-import { FaShoppingCart, FaUserCircle, FaTimes } from "react-icons/fa"
-import { CiMenuFries } from "react-icons/ci"
-import { useSelector } from "react-redux"
-import { ToggleTheme } from "../Context/ToggleThemeContext"
+import React, { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { FaShoppingCart, FaUserCircle, FaTimes } from "react-icons/fa";
+import { CiMenuFries } from "react-icons/ci";
+import { useSelector } from "react-redux";
+import { ToggleTheme } from "../Context/ToggleThemeContext";
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const navigate = useNavigate()
-  const cartItems = useSelector((state) => state.cart.cartItems || [])
-  const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const cartItems = useSelector((state) => state.cart.cartItems || []);
+  const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   const [user, setUser] = useState(() =>
     JSON.parse(localStorage.getItem("loggedInUser")),
-  )
+  );
 
   useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem("loggedInUser"))
-    setUser(currentUser)
-  }, [])
+    const currentUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    setUser(currentUser);
+  }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("loggedInUser")
-    setUser(null)
-    navigate("/login")
-    setMenuOpen(false)
-  }
+    localStorage.removeItem("loggedInUser");
+    setUser(null);
+    navigate("/login");
+    setMenuOpen(false);
+  };
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev)
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   const navItems = [
     { to: "/", text: "Home" },
@@ -63,12 +63,11 @@ const Header = () => {
           icon: <FaUserCircle size={20} />,
           text: "Login",
         },
-  ]
+  ];
 
   return (
     <header className="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-gray-700 shadow-md z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between flex-wrap">
-      
         <Link to="/">
           <img
             src="/logo1.png"
@@ -77,7 +76,6 @@ const Header = () => {
           />
         </Link>
 
-   
         <nav className="hidden md:flex flex-1 justify-end items-center gap-6">
           {navItems.map((item, i) => (
             <NavLink
@@ -85,7 +83,7 @@ const Header = () => {
               to={item.to}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `flex items-center gap-1 px-2 py-1 rounded transition ${
+                `flex items-center gap-1 px-2 py-1  transition ${
                   isActive
                     ? "text-blue-600 dark:text-blue-400 font-semibold border-b-2 border-blue-800"
                     : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800 "
@@ -106,7 +104,6 @@ const Header = () => {
           )}
         </nav>
 
-       
         <button
           onClick={toggleMenu}
           className="md:hidden text-gray-800 dark:text-white ml-auto"
@@ -115,7 +112,6 @@ const Header = () => {
         </button>
       </div>
 
-   
       {menuOpen && (
         <div className="md:hidden px-4 pb-4 space-y-2 bg-white dark:bg-slate-900 border-t dark:border-slate-700">
           {navItems.map((item, i) => (
@@ -151,7 +147,7 @@ const Header = () => {
         </div>
       )}
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

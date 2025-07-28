@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const SortDropdown = ({ sort, setSort }) => {
   return (
@@ -21,7 +21,7 @@ const SortDropdown = ({ sort, setSort }) => {
         <option value="priceLow">Price: Low to High</option>
       </select>
     </div>
-  )
-}
+  );
+};
 
-export default SortDropdown
+export default SortDropdown;

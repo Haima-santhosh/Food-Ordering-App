@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react"
-import { fetchUser } from "../api/adminUserData"
-
+import React, { useEffect, useState } from "react";
+import { fetchUser } from "../api/adminUserData";
 
 const AdminUsersPage = () => {
-  const [userData, setUserData] = useState(null)
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     (async () => {
-      const data = await fetchUser()
-      setUserData(data)
-      console.log(data)
+      const data = await fetchUser();
+      setUserData(data);
+      console.log(data);
     })();
   }, []);
 
@@ -17,7 +16,7 @@ const AdminUsersPage = () => {
     const updatedUsers = userData.map((user) =>
       user.id === id ? { ...user, isBlocked: !user.isBlocked } : user,
     );
-    setUserData(updatedUsers)
+    setUserData(updatedUsers);
   };
 
   const deleteUser = (id) => {
@@ -120,7 +119,7 @@ const AdminUsersPage = () => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminUsersPage
+export default AdminUsersPage;

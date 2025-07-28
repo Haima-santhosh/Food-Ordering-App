@@ -1,28 +1,28 @@
-import React from "react"
+import React from "react";
 
-import { Route, Routes } from "react-router-dom"
-import HomePage from "./pages/HomePage"
-import AboutPage from "./pages/AboutPage"
-import ContactPage from "./pages/ContactPage"
-import CartPage from "./pages/CartPage"
-import CheckoutPage from "./pages/CheckoutPage"
-import OrderConfirmationPage from "./pages/OrderConfirmationPage"
-import UserSideLayout from "./layout/UserSideLayout"
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import OrderConfirmationPage from "./pages/OrderConfirmationPage";
+import UserSideLayout from "./layout/UserSideLayout";
 
-import "@fortawesome/fontawesome-free/css/all.min.css"
-import RestaurentPage from "./pages/RestaurentPage"
-import MenuPage from "./pages/MenuPage"
-import MenuItemDetails from "./pages/MenuItemDetails"
-import LoginPage from "./components/LoginPage"
-import SignUpPage from "./components/SignUpPage"
-import UserProfilePage from "./pages/UserProfilePage"
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import RestaurentPage from "./pages/RestaurentPage";
+import MenuPage from "./pages/MenuPage";
+import MenuItemDetails from "./pages/MenuItemDetails";
+import LoginPage from "./components/LoginPage";
+import SignUpPage from "./components/SignUpPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
-import AdminSideLayout from "./layout/AdminSideLayout"
-import AdminDashboardPage from "./pages/AdminDashboardPage"
-import AdminOrdersPage from "./pages/AdminOrdersPage"
-import AdminUsersPage from "./pages/AdminUsersPage"
-import AdminProductsPage from "./pages/AdminProductsPage"
-import EditAdminProductsModal from "./components/EditAdminProductsModal.jsx"
+import AdminSideLayout from "./layout/AdminSideLayout";
+import AdminDashboardPage from "./pages/AdminDashboardPage";
+import AdminOrdersPage from "./pages/AdminOrdersPage";
+import AdminUsersPage from "./pages/AdminUsersPage";
+import AdminProductsPage from "./pages/AdminProductsPage";
+import EditAdminProductsModal from "./components/EditAdminProductsModal.jsx";
 
 function App() {
   return (
@@ -58,7 +58,7 @@ function App() {
         <Route path="users" element={<AdminUsersPage />} />
       </Route>
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;
