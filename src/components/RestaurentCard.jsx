@@ -5,7 +5,6 @@ const RestaurentCard = ({ item }) => {
   return (
     <Link to={`/restaurants/${item.id}/menu`}>
       <div className="mx-auto sm:mx-0 text-center max-w-sm w-full bg-white dark:bg-slate-800 rounded-xl shadow-md overflow-hidden border dark:border-slate-700 hover:shadow-xl hover:scale-105 transition-transform duration-300 p-2">
-      
         <div className="relative w-full h-48">
           <img
             src={item.menuImage}
@@ -17,9 +16,7 @@ const RestaurentCard = ({ item }) => {
           </span>
         </div>
 
-      
         <div className="bg-gray-50 dark:bg-slate-700 p-4 flex flex-col justify-between flex-grow min-h-[220px] rounded-b-lg">
-        
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white truncate">
               {item?.RestaurentName}
@@ -32,7 +29,6 @@ const RestaurentCard = ({ item }) => {
             </div>
           </div>
 
-         
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-1 truncate">
             {item?.AveragePrice}
           </p>
@@ -51,7 +47,6 @@ const RestaurentCard = ({ item }) => {
             <span>{item?.deliveryTime}</span>
           </div>
 
-         
           <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition font-medium">
             Browse Menu
           </button>

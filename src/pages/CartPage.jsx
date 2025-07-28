@@ -1,15 +1,17 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { increaseQuantity, decreaseQuantity, clearCart } from '../features/cart/cartSlice'
+import React from "react"
+import { useSelector, useDispatch } from "react-redux"
+import {increaseQuantity,decreaseQuantity,clearCart,
+} from "../features/cart/cartSlice"
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 
 const CartPage = () => {
-  const navigate = useNavigate()
-  const cartItems = useSelector(state => state.cart.cartItems)
+  const navigate = useNavigate();
+  const cartItems = useSelector((state) => state.cart.cartItems)
   const dispatch = useDispatch()
 
-  const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const totalPrice = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,0,)
 
   return (
     <div className="bg-gray-100 dark:bg-slate-900 p-6 min-h-screen">
@@ -21,13 +23,15 @@ const CartPage = () => {
         <div className="md:col-span-2 space-y-4">
           {cartItems.length === 0 ? (
             <div className="flex flex-col items-center space-y-4">
-         <p className="text-gray-800 dark:text-gray-200">Your cart is empty.</p>
-          <img 
-           src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png"
-           alt="Empty cart"
-           className="w-56 h-56 object-contain"
-          />
-       </div>
+              <p className="text-gray-800 dark:text-gray-200">
+                Your cart is empty.
+              </p>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png"
+                alt="Empty cart"
+                className="w-56 h-56 object-contain"
+              />
+            </div>
           ) : (
             cartItems.map((item) => (
               <div
@@ -41,7 +45,9 @@ const CartPage = () => {
                 />
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold">{item.itemName}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-2">₹{item.price}</p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-2">
+                    ₹{item.price}
+                  </p>
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => dispatch(decreaseQuantity(item.id))}
@@ -61,20 +67,18 @@ const CartPage = () => {
               </div>
             ))
           )}
-           
-            {cartItems.length > 0 && (
-        <div className="w-full flex justify-center mt-4">
-          <button
-            className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700"
-            onClick={() => dispatch(clearCart())}
-          >
-            Clear Cart
-          </button>
-        </div>
-      )}
-        </div>
 
-    
+          {cartItems.length > 0 && (
+            <div className="w-full flex justify-center mt-4">
+              <button
+                className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700"
+                onClick={() => dispatch(clearCart())}
+              >
+                Clear Cart
+              </button>
+            </div>
+          )}
+        </div>
 
         <div className="bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-lg shadow p-6">
           <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
@@ -89,12 +93,11 @@ const CartPage = () => {
           <hr className="my-2 border-gray-300 dark:border-gray-600" />
           <div className="flex justify-between font-bold text-lg">
             <span>Total</span>
-            <span>{(totalPrice + 25)} Rs.</span>
+            <span>{totalPrice + 25} Rs.</span>
           </div>
-         
 
           <button
-            onClick={() => navigate('/checkout')}
+            onClick={() => navigate("/checkout")}
             className="mt-6 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
           >
             Checkout
@@ -114,7 +117,7 @@ const CartPage = () => {
 
         <div className="w-fit">
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
             className="p-4 text-md bg-blue-700 text-white rounded-md shadow-md hover:bg-blue-600"
           >
             Go back to Home

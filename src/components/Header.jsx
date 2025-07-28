@@ -1,38 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { FaShoppingCart, FaUserCircle, FaTimes } from 'react-icons/fa';
-import { CiMenuFries } from 'react-icons/ci';
-import { useSelector } from 'react-redux';
-import { ToggleTheme } from '../Context/ToggleThemeContext';
+import React, { useState, useEffect } from "react"
+import { Link, NavLink, useNavigate } from "react-router-dom"
+import { FaShoppingCart, FaUserCircle, FaTimes } from "react-icons/fa"
+import { CiMenuFries } from "react-icons/ci"
+import { useSelector } from "react-redux"
+import { ToggleTheme } from "../Context/ToggleThemeContext"
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
-  const cartItems = useSelector((state) => state.cart.cartItems || []);
-  const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('loggedInUser')));
+  const [menuOpen, setMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  const cartItems = useSelector((state) => state.cart.cartItems || [])
+  const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0)
+  const [user, setUser] = useState(() =>
+    JSON.parse(localStorage.getItem("loggedInUser")),
+  )
 
   useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
-    setUser(currentUser);
-  }, []);
+    const currentUser = JSON.parse(localStorage.getItem("loggedInUser"))
+    setUser(currentUser)
+  }, [])
 
   const handleLogout = () => {
-    localStorage.removeItem('loggedInUser');
-    setUser(null);
-    navigate('/login');
-    setMenuOpen(false);
-  };
+    localStorage.removeItem("loggedInUser")
+    setUser(null)
+    navigate("/login")
+    setMenuOpen(false)
+  }
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const toggleMenu = () => setMenuOpen((prev) => !prev)
 
   const navItems = [
-    { to: '/', text: 'Home' },
-    { to: '/about', text: 'About' },
-    { to: '/restaurants', text: 'Restaurants' },
-    { to: '/contact', text: 'Contact' },
+    { to: "/", text: "Home" },
+    { to: "/about", text: "About" },
+    { to: "/restaurants", text: "Restaurants" },
+    { to: "/contact", text: "Contact" },
     {
-      to: '/cart',
+      to: "/cart",
       icon: (
         <div className="relative">
           <FaShoppingCart size={20} />
@@ -46,36 +48,37 @@ const Header = () => {
     },
     user
       ? {
-          to: '/profile',
+          to: "/profile",
           icon: (
             <div className="flex items-center gap-1">
               <FaUserCircle size={20} />
-              <span className="hidden md:inline text-sm">{user?.name || 'User'}</span>
+              <span className="hidden md:inline text-sm">
+                {user?.name || "User"}
+              </span>
             </div>
           ),
         }
       : {
-          to: '/login',
+          to: "/login",
           icon: <FaUserCircle size={20} />,
-          text: 'Login',
+          text: "Login",
         },
-  ];
+  ]
 
   return (
     <header className="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-gray-700 shadow-md z-50">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-       
+      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between flex-wrap">
+      
         <Link to="/">
-         <img
-  src="/logo1.png"
-  alt="Logo"
-  className="h-12 w-auto max-w-[180px] object-contain"
-/>
-
+          <img
+            src="/logo1.png"
+            alt="Logo"
+            className="h-12 w-auto max-w-[180px] object-contain"
+          />
         </Link>
 
-       
-        <nav className="hidden sm:flex items-center gap-6">
+   
+        <nav className="hidden md:flex flex-1 justify-end items-center gap-6">
           {navItems.map((item, i) => (
             <NavLink
               key={i}
@@ -84,8 +87,8 @@ const Header = () => {
               className={({ isActive }) =>
                 `flex items-center gap-1 px-2 py-1 rounded transition ${
                   isActive
-                    ? 'text-blue-600 dark:text-blue-400 font-semibold border-b-2 border-blue-800'
-                    : 'text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800 '
+                    ? "text-blue-600 dark:text-blue-400 font-semibold border-b-2 border-blue-800"
+                    : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800 "
                 }`
               }
             >
@@ -104,14 +107,17 @@ const Header = () => {
         </nav>
 
        
-        <button onClick={toggleMenu} className="sm:hidden text-gray-800 dark:text-white">
+        <button
+          onClick={toggleMenu}
+          className="md:hidden text-gray-800 dark:text-white ml-auto"
+        >
           {menuOpen ? <FaTimes size={22} /> : <CiMenuFries size={24} />}
         </button>
       </div>
 
-     
+   
       {menuOpen && (
-        <div className="sm:hidden px-4 pb-4 space-y-2 bg-white dark:bg-slate-900 border-t dark:border-slate-700">
+        <div className="md:hidden px-4 pb-4 space-y-2 bg-white dark:bg-slate-900 border-t dark:border-slate-700">
           {navItems.map((item, i) => (
             <NavLink
               key={i}
@@ -120,8 +126,8 @@ const Header = () => {
               className={({ isActive }) =>
                 `flex items-center gap-2 py-2 border-b border-gray-200 dark:border-slate-700 ${
                   isActive
-                    ? 'text-blue-600 dark:text-blue-400 font-semibold'
-                    : 'text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800'
+                    ? "text-blue-600 dark:text-blue-400 font-semibold"
+                    : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800"
                 }`
               }
             >
@@ -129,9 +135,11 @@ const Header = () => {
               {item.text && <span>{item.text}</span>}
             </NavLink>
           ))}
+
           <div className="pt-2">
             <ToggleTheme />
           </div>
+
           {user && (
             <button
               onClick={handleLogout}

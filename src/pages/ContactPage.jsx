@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 const ContactPage = () => {
   return (
@@ -8,15 +8,17 @@ const ContactPage = () => {
           Contact Us
         </h2>
         <p className="text-center text-gray-600 dark:text-gray-300 mb-12">
-          We'd love to hear from you! Whether it’s feedback, support or partnership—drop us a message.
+          We'd love to hear from you! Whether it’s feedback, support or
+          partnership—drop us a message.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
           <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow">
             <form noValidate>
               <div className="mb-4">
-                <label className="block mb-1 font-semibold text-gray-700 dark:text-white">Name</label>
+                <label className="block mb-1 font-semibold text-gray-700 dark:text-white">
+                  Name
+                </label>
                 <input
                   type="text"
                   placeholder="Please Enter Your Name"
@@ -25,7 +27,9 @@ const ContactPage = () => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block mb-1 font-semibold text-gray-700 dark:text-white">Email</label>
+                <label className="block mb-1 font-semibold text-gray-700 dark:text-white">
+                  Email
+                </label>
                 <input
                   type="email"
                   placeholder="Please Enter Your Email"
@@ -34,7 +38,9 @@ const ContactPage = () => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block mb-1 font-semibold text-gray-700 dark:text-white">Message</label>
+                <label className="block mb-1 font-semibold text-gray-700 dark:text-white">
+                  Message
+                </label>
                 <textarea
                   placeholder="Your message..."
                   rows="5"
@@ -51,9 +57,10 @@ const ContactPage = () => {
             </form>
           </div>
 
-         
           <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow flex flex-col justify-center">
-            <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Reach Us</h3>
+            <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
+              Reach Us
+            </h3>
             <p className="text-gray-700 dark:text-gray-300 mb-2">
               📍 <strong>Address:</strong> 123 Street, Kochi, Kerala
             </p>

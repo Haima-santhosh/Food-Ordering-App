@@ -1,61 +1,78 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-
-
+import React from "react"
+import { Link } from "react-router-dom"
 
 const Banner = () => {
-  
-
   const socialMedia = [
-    { link: "", image: "https://static.vecteezy.com/system/resources/thumbnails/018/930/752/small/twitter-logo-twitter-icon-transparent-free-free-png.png" },
-    { link: "", image: "https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png" },
-    { link: "", image: "https://static.vecteezy.com/system/resources/previews/042/127/122/non_2x/red-circle-bordered-youtube-logo-with-long-shadow-on-transparent-background-free-png.png" },
-    { link: "", image: "https://static.vecteezy.com/system/resources/thumbnails/042/148/632/small/instagram-logo-instagram-social-media-icon-free-png.png" },
-  ];
+    {
+      link: "",
+      image:
+        "https://static.vecteezy.com/system/resources/thumbnails/018/930/752/small/twitter-logo-twitter-icon-transparent-free-free-png.png",
+    },
+    {
+      link: "",
+      image:
+        "https://static.vecteezy.com/system/resources/previews/018/930/476/non_2x/facebook-logo-facebook-icon-transparent-free-png.png",
+    },
+    {
+      link: "",
+      image:
+        "https://static.vecteezy.com/system/resources/previews/042/127/122/non_2x/red-circle-bordered-youtube-logo-with-long-shadow-on-transparent-background-free-png.png",
+    },
+    {
+      link: "",
+      image:
+        "https://static.vecteezy.com/system/resources/thumbnails/042/148/632/small/instagram-logo-instagram-social-media-icon-free-png.png",
+    },
+  ]
 
   return (
-    <>
-      <div className="min-h-screen grid sm:grid-cols-1 md:grid-cols-2 bg-white dark:bg-gray-900 shadow-md">
-        <div className="flex justify-center items-center">
-          <div className="flex flex-col justify-center items-center p-10 gap-8 text-center">
+    <section className="min-h-screen bg-white dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+       
+        <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left gap-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-800 dark:text-blue-300 leading-tight">
+            Order Your <br /> Favorite Food Online
+          </h1>
 
-            <h1 className="text-4xl md:text-6xl font-extrabold text-blue-800 dark:text-blue-300 leading-snug tracking-tight drop-shadow-md hidden sm:block">
-              Order Your <br /> Favorite Food Online
-            </h1>
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-md leading-relaxed">
+            Craving something delicious? Get your favorite meals delivered to
+            your door — fast, fresh, and hassle-free.
+          </p>
 
-            <p className="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300 leading-relaxed max-w-lg">
-              Craving something delicious? Get your favorite meals delivered to your door — fast, fresh, and hassle-free.
-            </p>
+          <Link to="/restaurants">
+            <button className="mt-2 bg-blue-600 hover:bg-white dark:hover:bg-gray-800 text-white hover:text-blue-800 dark:hover:text-blue-300 border border-blue-800 dark:border-blue-400 px-6 py-3 rounded-xl text-base font-semibold shadow-md hover:shadow-xl transition duration-300">
+              Order Now
+            </button>
+          </Link>
 
-            <div className="mt-4 mb-4">
-              <Link to='restaurants'>
-                <button className="bg-blue-600 hover:bg-white dark:hover:bg-gray-800 text-white hover:text-blue-800 dark:hover:text-blue-300 border border-blue-800 dark:border-blue-400 px-6 py-3 rounded-xl text-base md:text-lg font-semibold shadow-md hover:shadow-xl transition duration-300 ease-in-out">
-                  Order Now
-                </button>
-              </Link>
-
-              <div className="flex justify-center items-center gap-6 pt-10">
-                {socialMedia.map((item) => (
-                  <a key={item.image} className="w-10 h-10 rounded-full overflow-hidden border hover:border-blue-800 dark:hover:border-blue-400" href={item.link}>
-                    <img className="w-full h-full" src={item.image} alt="" />
-                  </a>
-                ))}
-              </div>
-            </div>
+          <div className="flex gap-5 pt-4">
+            {socialMedia.map((item) => (
+              <a
+                key={item.image}
+                href={item.link}
+                className="w-10 h-10 rounded-full overflow-hidden border hover:border-blue-800 dark:hover:border-blue-400 transition"
+              >
+                <img
+                  className="w-full h-full object-cover"
+                  src={item.image}
+                  alt="social-icon"
+                />
+              </a>
+            ))}
           </div>
         </div>
 
-        <div className="flex justify-center items-center p-4 bg-white dark:bg-gray-900">
+      
+        <div className="flex justify-center items-center">
           <img
-            className="w-75 p-5 max-w-md md:max-w-full rounded-lg shadow-lg"
+            className="w-full max-w-xs sm:max-w-md md:max-w-lg rounded-lg shadow-xl"
             src="https://clotsoftwaresolutions.com/products/images/Foodiee/one.png"
             alt="Food delivery App"
           />
         </div>
       </div>
-    </>
-  );
-};
+    </section>
+  )
+}
 
-export default Banner;
+export default Banner
