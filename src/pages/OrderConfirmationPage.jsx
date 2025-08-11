@@ -5,7 +5,7 @@ const OrderConfirmationPage = () => {
   const order = JSON.parse(localStorage.getItem("latestOrder"));
 
   return (
-    <div className="min-h-screen bg-green-50 dark:bg-gray-900 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-green-50 dark:bg-gray-900 flex items-center justify-center px-4 py-5">
       <div className="bg-white dark:bg-gray-800 max-w-2xl w-full p-8 rounded-xl shadow-lg text-center">
         <div className="text-green-600 mb-4">
           <svg
